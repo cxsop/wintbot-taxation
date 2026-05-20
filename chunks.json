@@ -1,0 +1,420 @@
+{
+  "source_file": "taxatation.pdf",
+  "description": "Chunked listed NCD taxation knowledge base for a small RAG chatbot.",
+  "chunks": [
+    {
+      "id": "tax_ncd_001",
+      "title": "Listed NCDs are treated as capital assets",
+      "category": "capital_asset_classification",
+      "keywords": [
+        "listed ncd",
+        "ncd taxation",
+        "capital asset",
+        "demat",
+        "recognised stock exchange",
+        "bond tax treatment",
+        "debenture tax"
+      ],
+      "sample_questions": [
+        "Are listed NCDs treated as capital assets?",
+        "How are listed bonds classified for tax?",
+        "Is my listed NCD a capital asset?"
+      ],
+      "chunk": "Listed Non-Convertible Debentures, also called NCDs, held in dematerialised form and listed on a recognised stock exchange are treated as capital assets under the Income-tax Act, 1961.",
+      "answer_guidance": "Explain that listed NCDs are treated as capital assets when they are held in demat form and listed on a recognised stock exchange. Keep the answer simple and avoid giving personal tax advice."
+    },
+    {
+      "id": "tax_ncd_002",
+      "title": "Holding period rule for listed NCDs",
+      "category": "holding_period",
+      "keywords": [
+        "holding period",
+        "long term",
+        "short term",
+        "12 months",
+        "ltcg",
+        "stcg",
+        "listed ncd",
+        "bond holding"
+      ],
+      "sample_questions": [
+        "When is listed NCD long term?",
+        "What is the holding period for bonds?",
+        "If I hold NCD for more than 12 months, is it long term?"
+      ],
+      "chunk": "For listed NCDs, the holding period decides whether the capital gain or loss is long-term or short-term. If the NCD is held for more than 12 months, it is treated as a long-term capital asset. If it is held for 12 months or less, it is treated as a short-term capital asset.",
+      "answer_guidance": "Mention the 12-month rule clearly. More than 12 months means long-term. 12 months or less means short-term."
+    },
+    {
+      "id": "tax_ncd_003",
+      "title": "Tax rate on long-term capital gains from listed NCDs",
+      "category": "capital_gains_tax",
+      "keywords": [
+        "ltcg",
+        "long term capital gain",
+        "12.5%",
+        "listed ncd tax rate",
+        "bond sale tax",
+        "capital gains on ncd"
+      ],
+      "sample_questions": [
+        "What is the LTCG tax rate on listed NCDs?",
+        "How is long-term gain on bond taxed?",
+        "What tax applies if I sell NCD after 12 months?"
+      ],
+      "chunk": "Long-term capital gains on listed NCDs apply when the NCD is held for more than 12 months. The applicable long-term capital gains tax rate is 12.5%.",
+      "answer_guidance": "State that long-term capital gains apply only if the listed NCD is held for more than 12 months, and the rate is 12.5%."
+    },
+    {
+      "id": "tax_ncd_004",
+      "title": "Tax rate on short-term capital gains from listed NCDs",
+      "category": "capital_gains_tax",
+      "keywords": [
+        "stcg",
+        "short term capital gain",
+        "slab rate",
+        "listed ncd tax",
+        "bond sold before 12 months",
+        "short term bond tax"
+      ],
+      "sample_questions": [
+        "What is the STCG tax rate on listed NCDs?",
+        "How is bond gain taxed if sold before 12 months?",
+        "Is short-term gain on NCD taxed as per slab?"
+      ],
+      "chunk": "Short-term capital gains on listed NCDs apply when the NCD is held for 12 months or less. The gain is taxed at the investor's applicable income tax slab rate.",
+      "answer_guidance": "Explain that if the holding period is 12 months or less, the gain is short-term and taxed as per the investor's slab rate."
+    },
+    {
+      "id": "tax_ncd_005",
+      "title": "No indexation benefit for listed NCDs",
+      "category": "indexation",
+      "keywords": [
+        "indexation",
+        "indexation benefit",
+        "listed ncd",
+        "bond indexation",
+        "ltcg indexation",
+        "cost inflation index"
+      ],
+      "sample_questions": [
+        "Is indexation available on listed NCDs?",
+        "Can I claim indexation benefit on bond sale?",
+        "Does listed NCD get cost inflation benefit?"
+      ],
+      "chunk": "Indexation benefit is not available for listed NCDs. This means the cost of acquisition cannot be adjusted using indexation while calculating capital gains.",
+      "answer_guidance": "Clearly say that indexation benefit is not available for listed NCDs. Do not suggest indexation-based calculations."
+    },
+    {
+      "id": "tax_ncd_006",
+      "title": "Capital gain calculation formula",
+      "category": "capital_gain_calculation",
+      "keywords": [
+        "capital gain formula",
+        "sale consideration",
+        "cost of acquisition",
+        "cost of improvement",
+        "transfer expenses",
+        "bond capital gain",
+        "ncd gain calculation"
+      ],
+      "sample_questions": [
+        "How do I calculate capital gains on NCD?",
+        "What is the capital gain formula for bonds?",
+        "How is profit on NCD sale calculated?"
+      ],
+      "chunk": "Capital gain is calculated as: Sale Consideration minus Cost of Acquisition minus Cost of Improvement minus Transfer Expenses.",
+      "answer_guidance": "Give the simple formula. If needed, explain that sale price is reduced by purchase cost and eligible transfer-related expenses."
+    },
+    {
+      "id": "tax_ncd_007",
+      "title": "Interest income taxability",
+      "category": "interest_taxation",
+      "keywords": [
+        "interest income",
+        "coupon interest",
+        "income from other sources",
+        "due date basis",
+        "bond interest tax",
+        "ncd interest tax"
+      ],
+      "sample_questions": [
+        "How is bond interest taxed?",
+        "Under which head is NCD interest taxable?",
+        "Is coupon interest taxable?"
+      ],
+      "chunk": "Coupon interest from listed NCDs is taxable on a due-date basis under the head 'Income from Other Sources'.",
+      "answer_guidance": "Explain that coupon interest is separate from capital gains. Interest is taxed as income from other sources on a due-date basis."
+    },
+    {
+      "id": "tax_ncd_008",
+      "title": "TDS on NCD interest under Section 193",
+      "category": "tds",
+      "keywords": [
+        "tds",
+        "section 193",
+        "10%",
+        "interest tds",
+        "ncd tds",
+        "bond interest tds",
+        "tax deduction"
+      ],
+      "sample_questions": [
+        "Is TDS deducted on NCD interest?",
+        "What is the TDS rate on bond interest?",
+        "Why was 10% TDS deducted on my NCD interest?"
+      ],
+      "chunk": "TDS on NCD interest is deducted under Section 193. The rate is 10% on interest at the time of payment.",
+      "answer_guidance": "State that TDS is deducted at 10% on interest under Section 193 at the time of payment."
+    },
+    {
+      "id": "tax_ncd_009",
+      "title": "TDS threshold exemption for resident individual or HUF",
+      "category": "tds_threshold",
+      "keywords": [
+        "tds threshold",
+        "10000",
+        "₹10000",
+        "resident individual",
+        "huf",
+        "public company",
+        "debenture interest",
+        "no tds"
+      ],
+      "sample_questions": [
+        "When is TDS not deducted on NCD interest?",
+        "Is there a ₹10,000 TDS threshold for debentures?",
+        "Why was no TDS deducted on my bond interest?"
+      ],
+      "chunk": "No TDS is required if the aggregate interest payable to a resident individual or HUF on debentures of a public company does not exceed ₹10,000 in a financial year.",
+      "answer_guidance": "Mention the ₹10,000 threshold carefully. It applies to aggregate interest payable to a resident individual or HUF on debentures of a public company in a financial year."
+    },
+    {
+      "id": "tax_ncd_010",
+      "title": "Change in TDS rules from 1 April 2023",
+      "category": "tds_rule_change",
+      "keywords": [
+        "1 april 2023",
+        "before april 2023",
+        "tds exemption removed",
+        "listed ncd tds",
+        "underreporting",
+        "no tds before 2023"
+      ],
+      "sample_questions": [
+        "Why is TDS deducted after April 2023?",
+        "Was there no TDS on listed NCD interest earlier?",
+        "What changed from 1 April 2023 for NCD TDS?"
+      ],
+      "chunk": "The earlier exemption for listed NCDs was removed with effect from 1 April 2023 due to underreporting concerns. Before 1 April 2023, there was no TDS deduction on interest income from listed NCDs.",
+      "answer_guidance": "Explain that the TDS treatment changed from 1 April 2023. Before that, TDS was not deducted on listed NCD interest. After the change, TDS may apply."
+    },
+    {
+      "id": "tax_ncd_011",
+      "title": "Redemption at face value and capital gain or loss",
+      "category": "redemption_taxation",
+      "keywords": [
+        "redemption",
+        "face value",
+        "maturity",
+        "capital gain",
+        "capital loss",
+        "acquisition cost",
+        "ncd maturity tax"
+      ],
+      "sample_questions": [
+        "Is there capital gain on bond maturity?",
+        "How is NCD redemption taxed?",
+        "If NCD is redeemed at face value, is it taxable?"
+      ],
+      "chunk": "When an NCD is redeemed at face value on maturity, the difference between the face value and the acquisition cost is treated as a capital gain or capital loss.",
+      "answer_guidance": "Explain that redemption can also create capital gain or loss if acquisition cost is different from face value."
+    },
+    {
+      "id": "tax_ncd_012",
+      "title": "Holding period rule for redemption at maturity",
+      "category": "redemption_holding_period",
+      "keywords": [
+        "redemption holding period",
+        "maturity long term",
+        "maturity short term",
+        "face value",
+        "12 months",
+        "capital gain on maturity"
+      ],
+      "sample_questions": [
+        "If bond matures after 12 months, is gain long term?",
+        "How to decide LTCG or STCG on maturity?",
+        "What is the holding period rule for redemption?"
+      ],
+      "chunk": "For redemption at face value, the capital gain or loss is long-term if the NCD was held for more than 12 months. It is short-term if the NCD was held for 12 months or less.",
+      "answer_guidance": "Apply the same 12-month holding period rule for redemption cases."
+    },
+    {
+      "id": "tax_ncd_013",
+      "title": "Secondary market sale taxation",
+      "category": "secondary_market_sale",
+      "keywords": [
+        "secondary market",
+        "sell bond",
+        "sale price",
+        "cost of acquisition",
+        "capital gain loss",
+        "listed ncd sale",
+        "before maturity"
+      ],
+      "sample_questions": [
+        "How is tax calculated if I sell NCD before maturity?",
+        "What happens when I sell bonds in secondary market?",
+        "How to calculate gain or loss on secondary market sale?"
+      ],
+      "chunk": "On sale of NCDs in the secondary market, capital gain or loss is calculated as Sale Price minus Cost of Acquisition. The applicable tax treatment depends on whether the holding period is more than 12 months or 12 months or less.",
+      "answer_guidance": "Explain that selling before maturity creates capital gain or loss based on sale price and acquisition cost. Then apply long-term or short-term rule based on holding period."
+    },
+    {
+      "id": "tax_ncd_014",
+      "title": "Short-term capital loss set-off rule",
+      "category": "loss_setoff",
+      "keywords": [
+        "stcl",
+        "short term capital loss",
+        "set off",
+        "capital loss",
+        "stcg",
+        "ltcg",
+        "loss adjustment"
+      ],
+      "sample_questions": [
+        "Can short-term capital loss from NCD be set off?",
+        "Against what can STCL be adjusted?",
+        "Can bond short-term loss be adjusted against capital gains?"
+      ],
+      "chunk": "Short-term capital loss can be set off against both short-term capital gains and long-term capital gains.",
+      "answer_guidance": "Clearly state that STCL can be set off against both STCG and LTCG."
+    },
+    {
+      "id": "tax_ncd_015",
+      "title": "Long-term capital loss set-off rule",
+      "category": "loss_setoff",
+      "keywords": [
+        "ltcl",
+        "long term capital loss",
+        "set off",
+        "capital loss",
+        "ltcg",
+        "loss adjustment",
+        "bond loss"
+      ],
+      "sample_questions": [
+        "Can long-term capital loss from NCD be set off?",
+        "Against what can LTCL be adjusted?",
+        "Can bond long-term loss be adjusted against short-term gain?"
+      ],
+      "chunk": "Long-term capital loss can be set off only against long-term capital gains.",
+      "answer_guidance": "Clearly state that LTCL can be set off only against LTCG. Do not say it can be adjusted against STCG."
+    },
+    {
+      "id": "tax_ncd_016",
+      "title": "Capital loss cannot be set off against other income heads",
+      "category": "loss_setoff_restriction",
+      "keywords": [
+        "capital loss",
+        "other income",
+        "salary income",
+        "business income",
+        "income from other sources",
+        "set off restriction",
+        "bond loss"
+      ],
+      "sample_questions": [
+        "Can bond capital loss be adjusted against salary?",
+        "Can NCD loss be set off against interest income?",
+        "Can capital loss be adjusted against other income?"
+      ],
+      "chunk": "Loss from the sale of a capital asset cannot be set off against income under any other head.",
+      "answer_guidance": "Explain that capital loss cannot be adjusted against salary income, business income, or income from other sources. It can be adjusted only as per capital gains set-off rules."
+    },
+    {
+      "id": "tax_ncd_017",
+      "title": "Carry forward of capital losses",
+      "category": "loss_carry_forward",
+      "keywords": [
+        "carry forward",
+        "8 assessment years",
+        "capital loss",
+        "unabsorbed loss",
+        "section 139(1)",
+        "itr due date",
+        "loss carry forward"
+      ],
+      "sample_questions": [
+        "Can I carry forward NCD capital loss?",
+        "For how many years can capital loss be carried forward?",
+        "What is the condition to carry forward capital loss?"
+      ],
+      "chunk": "Unabsorbed short-term or long-term capital losses can be carried forward for up to 8 assessment years, subject to filing the return of income within the prescribed due date under Section 139(1).",
+      "answer_guidance": "Mention that both STCL and LTCL can be carried forward up to 8 assessment years. Also mention the condition that the ITR should be filed within the due date under Section 139(1)."
+    },
+    {
+      "id": "tax_ncd_018",
+      "title": "Difference between interest taxation and capital gains taxation",
+      "category": "interest_vs_capital_gain",
+      "keywords": [
+        "interest vs capital gain",
+        "coupon vs sale gain",
+        "income from other sources",
+        "capital gains",
+        "bond taxation",
+        "ncd tax difference"
+      ],
+      "sample_questions": [
+        "What is the difference between interest tax and capital gains tax on bonds?",
+        "Is coupon interest same as capital gain?",
+        "How are bond interest and bond sale profit taxed?"
+      ],
+      "chunk": "For listed NCDs, coupon interest and capital gains are taxed separately. Coupon interest is taxable under 'Income from Other Sources' on a due-date basis. Gain or loss from sale or redemption is treated as capital gain or capital loss, based on sale/redemption value and cost of acquisition.",
+      "answer_guidance": "Use this chunk when the user is confused between interest income and capital gain. Explain that interest and sale/redemption gain are different tax components."
+    },
+    {
+      "id": "tax_ncd_019",
+      "title": "Simple answer for selling NCD before maturity",
+      "category": "customer_facing_sale_tax",
+      "keywords": [
+        "sell before maturity",
+        "early sale",
+        "secondary sale",
+        "tax on sale",
+        "capital gain",
+        "capital loss",
+        "customer answer"
+      ],
+      "sample_questions": [
+        "What should I tell user who sold bond before maturity?",
+        "How to explain tax on early bond sale?",
+        "User wants tax impact of selling listed NCD before maturity"
+      ],
+      "chunk": "If a listed NCD is sold before maturity, the tax impact is based on capital gain or loss. The gain or loss is calculated as Sale Price minus Cost of Acquisition. If the holding period is more than 12 months, it is long-term and taxed at 12.5%. If the holding period is 12 months or less, it is short-term and taxed as per the investor's slab rate.",
+      "answer_guidance": "Give a support-ready explanation. Keep it simple. Add that the user may consult a tax advisor or CA for personal tax filing treatment."
+    },
+    {
+      "id": "tax_ncd_020",
+      "title": "Simple answer for NCD maturity redemption",
+      "category": "customer_facing_redemption_tax",
+      "keywords": [
+        "maturity",
+        "redemption",
+        "face value",
+        "tax on maturity",
+        "capital gain loss",
+        "customer answer"
+      ],
+      "sample_questions": [
+        "What should I tell user about tax on bond maturity?",
+        "Is maturity amount taxable?",
+        "How to explain redemption tax?"
+      ],
+      "chunk": "At maturity, if the NCD is redeemed at face value, the difference between the face value and the acquisition cost is treated as capital gain or loss. If the NCD was held for more than 12 months, it is long-term. If it was held for 12 months or less, it is short-term.",
+      "answer_guidance": "Explain that maturity/redemption may create capital gain or loss when the purchase cost is different from face value. Keep the response simple and non-advisory."
+    }
+  ]
+}
