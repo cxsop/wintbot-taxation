@@ -1,656 +1,570 @@
 {
-  "source_file": "Taxation.pdf",
-  "source_file_note": "Taxation in Bonds",
+  "kb_name": "Bond Taxation Knowledge Base",
+  "version": "2026-05-20.1",
+  "source_document": "Taxation.pdf",
+  "description": "Structured knowledge base created from the uploaded bond taxation report for support-assistant style answers.",
+  "rules": {
+    "answer_scope": "Answer only bond taxation, TDS, Form 168/Form 26AS, AIS, ITR mapping, tax reports, capital gains/losses, and related support-process questions based on this KB.",
+    "tone": "Professional, simple Indian English, customer-support ready, address as Sir/Madam when customer-facing.",
+    "disclaimer": "Wint Wealth is not a tax advisor. For personal tax filing treatment, the user may consult a CA or tax advisor."
+  },
   "chunks": [
     {
-      "id": "tax_bond_001",
-      "title": "Bond taxation lifecycle",
-      "category": "bond_tax_lifecycle",
-      "keywords": [
-        "bond taxation",
-        "interest income",
-        "capital gains",
-        "premium",
-        "discount",
-        "maturity",
-        "tax lifecycle"
+      "id": "BTX-001",
+      "source_pages": [2],
+      "section": "Lifecycle of Bond Taxation",
+      "intent_tags": ["overview", "lifecycle", "bond taxation basics"],
+      "keywords": ["bond taxation", "lifecycle", "interest", "selling", "capital gain", "capital loss", "premium", "discount", "maturity"],
+      "question_patterns": ["How are bonds taxed?", "Explain bond taxation lifecycle", "When does tax apply on bonds?"],
+      "facts": [
+        "Bond taxation can arise at multiple stages: receiving interest, selling before maturity, and maturity/redemption where purchase premium or discount affects capital gain or loss.",
+        "Interest is generally taxed under Income from Other Sources.",
+        "Selling before maturity may create capital gain or capital loss depending on sale value and acquisition cost.",
+        "At maturity, purchase premium or discount can create capital loss or capital gain when compared with face value/redemption value."
       ],
-      "sample_questions": [
-        "How are bonds taxed across their lifecycle?",
-        "When do I pay tax on bonds?",
-        "What tax applies when I receive interest or sell a bond?"
-      ],
-      "chunk": "Bond taxation generally happens at three stages: when interest is received, when the bond is sold before maturity, and when a bond purchased at a premium or discount is redeemed at maturity. Interest is normally taxed as income from other sources. Selling or redeeming a bond can create a capital gain or capital loss depending on the purchase cost, sale value or maturity value, and holding period.",
-      "answer_guidance": "Give a simple lifecycle view: interest payout is taxed separately from capital gain or loss. Avoid personal tax advice and suggest consulting a tax professional for individual filing decisions."
+      "support_answer": "Sir/Madam, bond taxation generally comes in three stages: interest payout, sale before maturity, and maturity/redemption. Interest is taxed under Income from Other Sources. If the bond is sold or redeemed at a value different from its acquisition cost, it may create capital gain or capital loss.",
+      "related_chunks": ["BTX-002", "BTX-006", "BTX-010"]
     },
     {
-      "id": "tax_bond_002",
-      "title": "Interest is taxed when paid or credited",
-      "category": "interest_income",
-      "keywords": [
-        "interest income",
-        "coupon",
-        "accrued interest",
-        "interest payout",
-        "income from other sources",
-        "taxable interest"
+      "id": "BTX-002",
+      "source_pages": [2, 3],
+      "section": "Interest Income Taxability",
+      "intent_tags": ["interest taxation", "accrued interest", "coupon", "income from other sources"],
+      "keywords": ["interest", "coupon", "accrued interest", "taxable", "income from other sources", "interest payout", "received", "platform accrued"],
+      "question_patterns": ["Is accrued interest taxable?", "When is bond interest taxed?", "Why platform accrued interest is not taxable?", "How is coupon interest taxed?"],
+      "facts": [
+        "Interest is taxed when it is received from the issuing entity.",
+        "A platform may show accrued interest daily, but that daily accrued figure is not taxable merely because it is displayed.",
+        "Tax generally applies when the interest payout happens or when the bond is sold before maturity where accrued interest is part of the sale handling.",
+        "Example from KB: if accrued interest shown is ₹4,300 but interest received is ₹3,000, tax applies on ₹3,000 only."
       ],
-      "sample_questions": [
-        "Is accrued interest taxable?",
-        "When is bond interest taxed?",
-        "Is the interest shown on the platform taxable immediately?"
-      ],
-      "chunk": "Bond interest is taxed when it is actually paid or credited by the issuing entity, not merely because the platform shows daily accrued interest. The platform may show accrued interest for tracking, but tax usually applies when the coupon payout happens or when accrued interest is settled as part of a sale before maturity.",
-      "answer_guidance": "Clarify the difference between displayed accrual and actual interest received. State that taxable interest is reported under income from other sources."
+      "support_answer": "Sir/Madam, the accrued interest shown on the platform is only a running estimate. It is not taxable just because it is visible on the platform. Interest becomes taxable when the coupon/interest is actually paid by the issuer. For example, if the platform shows ₹4,300 accrued but only ₹3,000 is received as interest payout, the taxable interest is ₹3,000.",
+      "related_chunks": ["BTX-003", "BTX-030", "BTX-039"]
     },
     {
-      "id": "tax_bond_003",
-      "title": "Accrued interest example",
-      "category": "interest_income_examples",
-      "keywords": [
-        "accrued interest example",
-        "interest received",
-        "tax applicable",
-        "coupon payout",
-        "taxable amount"
+      "id": "BTX-003",
+      "source_pages": [3],
+      "section": "TDS on Bond Interest",
+      "intent_tags": ["tds", "section 193", "section 393", "interest tds", "threshold"],
+      "keywords": ["tds", "tax deducted", "section 193", "section 393", "10%", "threshold", "10000", "interest payment", "deducted"],
+      "question_patterns": ["Why was TDS deducted?", "What is TDS on NCD interest?", "When is TDS deducted on bond interest?", "Why no TDS deducted?"],
+      "facts": [
+        "TDS is triggered when interest is paid.",
+        "The uploaded KB refers to Section 193 for Interest on Securities till 31 March 2026 and Section 393 from 1 April 2026.",
+        "TDS may not be deducted if interest is below the applicable threshold, typically ₹10,000 depending on issuer type and issuer process.",
+        "Even if TDS is not deducted due to threshold or issuer process, tax liability on interest income may still exist."
       ],
-      "sample_questions": [
-        "If accrued interest is higher than received interest, what is taxable?",
-        "How much interest should I report if only part was paid?",
-        "Can you explain accrued versus received interest with an example?"
-      ],
-      "chunk": "If the platform shows accrued interest of Rs. 4,300 but the user actually receives Rs. 3,000 as interest, the taxable interest for that payout is Rs. 3,000. The displayed accrued amount by itself does not mean the entire amount has become taxable immediately.",
-      "answer_guidance": "Use numbers to explain that tax follows the actual interest received or credited. Keep the answer practical for investor relations support."
+      "support_answer": "Sir/Madam, TDS on bond interest is generally deducted when the issuer pays the interest. If TDS is not deducted, it may be because the issuer is following the applicable threshold rule, generally around ₹10,000 depending on issuer type and process. However, even if TDS is not deducted, the interest income may still need to be reported while filing ITR.",
+      "related_chunks": ["BTX-004", "BTX-014", "BTX-035"]
     },
     {
-      "id": "tax_bond_004",
-      "title": "TDS on bond interest",
-      "category": "tds_on_interest",
-      "keywords": [
-        "TDS",
-        "interest on securities",
-        "Section 193",
-        "Section 393",
-        "bond interest",
-        "tax deducted at source"
+      "id": "BTX-004",
+      "source_pages": [3, 20],
+      "section": "Gross Interest Reporting When TDS Is Deducted",
+      "intent_tags": ["gross interest", "net interest", "tds credit", "itr reporting"],
+      "keywords": ["gross interest", "net received", "tds credit", "itr", "20000", "18000", "2000", "report gross"],
+      "question_patterns": ["Should user report gross or net interest?", "Interest received after TDS what amount to show in ITR?", "How to report interest when TDS deducted?"],
+      "facts": [
+        "If interest is ₹20,000 and TDS is ₹2,000, net received is ₹18,000.",
+        "While filing ITR, the user should report the gross interest amount of ₹20,000, not only the net amount received.",
+        "The TDS amount of ₹2,000 can be claimed as TDS credit while filing ITR, subject to Form 168/Form 26AS reflection and tax rules."
       ],
-      "sample_questions": [
-        "When is TDS deducted on bond interest?",
-        "Which section applies to TDS on bonds?",
-        "Why was TDS deducted from my interest payout?"
-      ],
-      "chunk": "TDS on bond interest is deducted when interest is paid. The PDF notes Section 193 for interest on securities until 31 March 2026 and Section 393 from 1 April 2026. TDS reduces the net amount paid to the user, but the user must still report the gross interest income while filing ITR and claim the deducted TDS as tax credit where applicable.",
-      "answer_guidance": "Explain that TDS is a tax credit, not the final tax calculation. Mention section references only as general information and avoid legal certainty for individual cases."
+      "support_answer": "Sir/Madam, the user should generally report the gross interest amount in ITR, not only the net amount received. For example, if interest is ₹20,000 and TDS is ₹2,000, the user receives ₹18,000, but the interest income to report is ₹20,000. The deducted ₹2,000 can be claimed as TDS credit while filing ITR, subject to it reflecting against the PAN.",
+      "related_chunks": ["BTX-016", "BTX-030", "BTX-032"]
     },
     {
-      "id": "tax_bond_005",
-      "title": "TDS threshold does not remove tax liability",
-      "category": "tds_threshold",
-      "keywords": [
-        "TDS threshold",
-        "10000 rule",
-        "no TDS",
-        "issuer threshold",
-        "tax liability",
-        "NBFC"
+      "id": "BTX-005",
+      "source_pages": [3, 4, 22],
+      "section": "Holding Period and Capital Gains Tax Rate",
+      "intent_tags": ["holding period", "ltcg", "stcg", "tax rate", "12 months"],
+      "keywords": ["holding period", "12 months", "less than 12 months", "more than 12 months", "ltcg", "stcg", "12.5%", "slab rate", "budget 2024"],
+      "question_patterns": ["What is LTCG on bonds?", "What is STCG on bonds?", "What tax rate applies if held more than 12 months?", "What if sold within 12 months?"],
+      "facts": [
+        "If a listed bond/NCD is held for less than or equal to 12 months, capital gain is treated as STCG and taxed at the investor's applicable slab rate.",
+        "If a listed bond/NCD is held for more than 12 months, capital gain is treated as LTCG and taxed at 12.5% as per the KB's Budget 2024 reference.",
+        "The KB states there is no minimum exemption threshold for LTCG on bonds; 12.5% applies to the full gain."
       ],
-      "sample_questions": [
-        "Why was no TDS deducted on my bond interest?",
-        "If TDS is not deducted, is the interest tax free?",
-        "What is the Rs. 10,000 TDS rule?"
-      ],
-      "chunk": "TDS may not be deducted if the interest paid by an issuer is below the applicable threshold, commonly Rs. 10,000 depending on issuer type and compliance rules. However, absence of TDS does not make the interest tax-free. The interest income may still need to be reported in the user’s ITR.",
-      "answer_guidance": "Separate TDS deduction from income tax liability. Say that the issuer's threshold and compliance process can affect whether TDS is deducted."
+      "support_answer": "Sir/Madam, the tax rate depends on the holding period. If the listed bond/NCD is held for 12 months or less, the gain is treated as short-term capital gain and taxed as per the investor’s slab rate. If it is held for more than 12 months, the gain is treated as long-term capital gain and taxed at 12.5%. The KB also notes that there is no minimum exemption threshold for LTCG on bonds.",
+      "related_chunks": ["BTX-006", "BTX-031"]
     },
     {
-      "id": "tax_bond_006",
-      "title": "Gross interest reporting when TDS is deducted",
-      "category": "tds_reporting",
-      "keywords": [
-        "gross interest",
-        "net interest",
-        "TDS credit",
-        "ITR",
-        "Form 168",
-        "Form 26AS"
+      "id": "BTX-006",
+      "source_pages": [3, 4, 21, 22],
+      "section": "Capital Gain or Loss Calculation on Sale",
+      "intent_tags": ["sale", "secondary market", "capital gain", "capital loss", "sell before maturity"],
+      "keywords": ["sell", "selling", "sold", "before maturity", "secondary market", "sale price", "purchase price", "acquisition cost", "capital gain", "capital loss"],
+      "question_patterns": ["How is tax calculated if bond is sold before maturity?", "What happens if I sell listed NCD?", "How to calculate capital gain on bond sale?", "Why capital gain on sold bond?"],
+      "facts": [
+        "For a sale before maturity, capital gain/loss is based on the difference between sale value and acquisition cost/investment amount.",
+        "If the sale amount is higher than purchase/acquisition cost, it is a capital gain.",
+        "If the sale amount is lower than purchase/acquisition cost, it is a capital loss.",
+        "Example from KB: Buy ₹50,000, sell ₹55,000, gain ₹5,000.",
+        "Interest received is taxed separately from capital gain. Example from KB: sell gain ₹4,000 and interest ₹1,000 are taxed separately."
       ],
-      "sample_questions": [
-        "Should I report gross or net interest in ITR?",
-        "If I receive interest after TDS, what amount is taxable?",
-        "How do I claim TDS credit?"
-      ],
-      "chunk": "If interest is Rs. 20,000, TDS is Rs. 2,000, and the user receives Rs. 18,000, the user should generally report the gross interest amount of Rs. 20,000 in ITR. The Rs. 2,000 deducted can be claimed as TDS credit, subject to the user's tax computation and reflected tax records.",
-      "answer_guidance": "Use the gross-interest example from the PDF. Remind the user to reconcile TDS credit before filing."
+      "support_answer": "Sir/Madam, if a listed NCD is sold before maturity, the tax impact is based on capital gain or capital loss. The calculation is sale value minus acquisition cost. If the sale value is higher, it is a capital gain. If it is lower, it is a capital loss. The holding period then decides whether it is STCG or LTCG. Interest received is taxed separately under Income from Other Sources.",
+      "related_chunks": ["BTX-005", "BTX-009", "BTX-031"]
     },
     {
-      "id": "tax_bond_007",
-      "title": "Capital gains calculation on bonds",
-      "category": "capital_gains",
-      "keywords": [
-        "capital gain",
-        "capital loss",
-        "investment amount",
-        "selling amount",
-        "maturity amount",
-        "bond sale"
+      "id": "BTX-007",
+      "source_pages": [4],
+      "section": "Capital Loss Set-Off and Carry Forward",
+      "intent_tags": ["capital loss", "set off", "carry forward", "stcl", "ltcl"],
+      "keywords": ["capital loss", "stcl", "ltcl", "set off", "carry forward", "8 years", "loss adjustment", "itr"],
+      "question_patterns": ["Can bond capital loss be set off?", "Can STCL be adjusted against LTCG?", "Can LTCL be adjusted against STCG?", "Can loss be carried forward?"],
+      "facts": [
+        "Short-term capital loss can be set off against both STCG and LTCG.",
+        "Long-term capital loss can be set off only against LTCG, not against STCG.",
+        "Capital loss can be carried forward for 8 years if declared in ITR.",
+        "Example from KB: STCG ₹5,000 and STCL ₹4,000 gives net taxable gain of ₹1,000.",
+        "Example from KB: if total loss is ₹10,000 and no gains exist in the same year, it can be carried forward for the next 8 years."
       ],
-      "sample_questions": [
-        "How is capital gain calculated on bonds?",
-        "What creates a capital loss in bonds?",
-        "Is profit on selling a bond taxed as capital gains?"
-      ],
-      "chunk": "Capital gain or loss is based on the difference between the investment amount or acquisition cost and the selling amount or maturity amount. If the sale or redemption amount is higher than the purchase cost, it is a capital gain. If it is lower, it is a capital loss. Interest received is taxed separately from capital gain or loss.",
-      "answer_guidance": "Explain the broad formula and keep interest taxation separate from capital gains taxation."
+      "support_answer": "Sir/Madam, capital loss from bonds can be adjusted only against capital gains as per the set-off rules. STCL can be set off against both STCG and LTCG. LTCL can be set off only against LTCG. If the loss cannot be fully used in the same year, it can be carried forward for 8 years, provided it is declared in the ITR.",
+      "related_chunks": ["BTX-006", "BTX-011"]
     },
     {
-      "id": "tax_bond_008",
-      "title": "Holding period and tax rate for listed bonds",
-      "category": "capital_gains_tax_rate",
-      "keywords": [
-        "holding period",
-        "STCG",
-        "LTCG",
-        "12 months",
-        "12.5%",
-        "slab rate",
-        "Budget 2024"
+      "id": "BTX-008",
+      "source_pages": [5],
+      "section": "Maturity Case - Face Value Returned",
+      "intent_tags": ["maturity", "redemption", "face value", "principal repayment"],
+      "keywords": ["maturity", "redeemed", "redemption", "face value", "principal", "only interest taxed", "matured"],
+      "question_patterns": ["What is taxed at maturity?", "Is principal repayment taxable?", "What happens when bond matures?"],
+      "facts": [
+        "At maturity, the face value is returned.",
+        "If the bond is redeemed at face value and there is no premium/discount impact, only interest is taxed.",
+        "Principal repayment/return of capital is not taxed as interest income.",
+        "If acquisition cost differs from redemption/face value due to premium or discount, there may be capital loss or gain."
       ],
-      "sample_questions": [
-        "What is the holding period for listed bonds?",
-        "What tax rate applies if I sell bonds after one year?",
-        "How are STCG and LTCG taxed on bonds?"
-      ],
-      "chunk": "For listed bonds, the PDF states that holdings below 12 months are treated as short-term capital gains and taxed at the investor's applicable slab rate. Holdings over 12 months are treated as long-term capital gains and taxed at 12.5% based on Budget 2024 changes. The PDF notes no minimum exemption threshold for LTCG on bonds, so the 12.5% rate applies to the full gain.",
-      "answer_guidance": "State the short-term versus long-term distinction clearly. Avoid applying the rule to unlisted instruments unless separately verified."
+      "support_answer": "Sir/Madam, at maturity, the face value/principal is returned. The principal repayment itself is generally a return of capital. Interest received is taxable. If the bond was purchased at a premium or discount compared with face value, the difference may also create capital loss or capital gain.",
+      "related_chunks": ["BTX-009", "BTX-010", "BTX-031"]
     },
     {
-      "id": "tax_bond_009",
-      "title": "Capital gain and interest are taxed separately",
-      "category": "capital_gains_examples",
-      "keywords": [
-        "separate taxation",
-        "interest repayment",
-        "capital gain example",
-        "bond sale",
-        "sell price"
+      "id": "BTX-009",
+      "source_pages": [5, 6],
+      "section": "Bond Purchased at Premium",
+      "intent_tags": ["premium", "capital loss", "maturity", "acquisition cost"],
+      "keywords": ["premium", "purchased above face value", "capital loss", "101000", "100000", "maturity", "acquisition cost", "investment amount"],
+      "question_patterns": ["Why capital loss if bond matured?", "What if bond purchased at premium?", "Why tax report shows loss on maturity?"],
+      "facts": [
+        "If a bond is bought above face value, redemption at face value can create capital loss.",
+        "Example from KB: investment amount ₹1,01,000 and maturity face value ₹1,00,000 creates ₹1,000 capital loss.",
+        "Interest earned is taxed separately as interest income under Other Sources.",
+        "Capital loss can be adjusted only against capital gains as per ST/LT rules, and unused loss can be carried forward if eligible."
       ],
-      "sample_questions": [
-        "Are interest and capital gains combined for tax?",
-        "How is tax calculated if I sell a bond and also receive interest?",
-        "Can you give a bond sale tax example?"
-      ],
-      "chunk": "If a user invests Rs. 50,000, sells the bond for Rs. 54,000, and receives Rs. 1,000 as interest, the Rs. 4,000 difference is treated as capital gain while the Rs. 1,000 interest is taxed separately as interest income under income from other sources.",
-      "answer_guidance": "Use this example to prevent mixing interest income with capital gains."
+      "support_answer": "Sir/Madam, if a bond was purchased at a premium, the acquisition cost is higher than face value. So when it matures at face value, the difference may appear as capital loss. For example, if the investment amount was ₹1,01,000 and maturity value is ₹1,00,000, the ₹1,000 difference is treated as capital loss. Interest earned is taxed separately as interest income.",
+      "related_chunks": ["BTX-007", "BTX-008", "BTX-038"]
     },
     {
-      "id": "tax_bond_010",
-      "title": "Capital loss set-off and carry forward",
-      "category": "capital_losses",
-      "keywords": [
-        "capital loss",
-        "STCL",
-        "LTCL",
-        "set off",
-        "carry forward",
-        "8 years",
-        "ITR"
+      "id": "BTX-010",
+      "source_pages": [6],
+      "section": "Bond Purchased at Discount",
+      "intent_tags": ["discount", "capital gain", "maturity", "acquisition cost"],
+      "keywords": ["discount", "purchased below face value", "capital gain", "90000", "100000", "maturity", "face value"],
+      "question_patterns": ["What if bond purchased at discount?", "Why capital gain on maturity?", "How discount purchase is taxed?"],
+      "facts": [
+        "If a bond is bought below face value and redeemed at face value, the difference is treated as capital gain.",
+        "Example from KB: investment amount ₹90,000 and maturity at face value ₹1,00,000 gives ₹10,000 capital gain."
       ],
-      "sample_questions": [
-        "Can I set off capital loss from bonds?",
-        "How long can capital loss be carried forward?",
-        "Can long-term capital loss offset short-term capital gain?"
-      ],
-      "chunk": "Short-term capital loss can be set off against both short-term and long-term capital gains. Long-term capital loss can be set off only against long-term capital gains, not short-term capital gains. Unused capital loss can be carried forward for 8 years if it is declared in the ITR as required.",
-      "answer_guidance": "Mention STCL and LTCL rules separately. Encourage proper ITR reporting for carry-forward eligibility."
+      "support_answer": "Sir/Madam, if a bond is purchased at a discount, the acquisition cost is lower than face value. So when it matures at face value, the difference may be treated as capital gain. For example, if the investment amount was ₹90,000 and maturity value is ₹1,00,000, the ₹10,000 difference is treated as capital gain.",
+      "related_chunks": ["BTX-005", "BTX-008"]
     },
     {
-      "id": "tax_bond_011",
-      "title": "Maturity taxation for regular bonds",
-      "category": "maturity_taxation",
-      "keywords": [
-        "maturity",
-        "face value",
-        "principal repayment",
-        "interest taxed",
-        "redemption",
-        "return of capital"
+      "id": "BTX-011",
+      "source_pages": [6],
+      "section": "Deep Discount / Zero Coupon Bond Treatment",
+      "intent_tags": ["zero coupon", "deep discount", "oid", "special case"],
+      "keywords": ["deep discount", "zero coupon", "zero-coupon", "oid", "no coupon", "slab rate", "ltcg", "12.5%", "one unit", "1 lakh"],
+      "question_patterns": ["How is zero coupon bond taxed?", "What is deep discount bond tax?", "If zero coupon bond is sold before maturity?"],
+      "facts": [
+        "For deep discount/zero coupon bonds, the KB says if held till maturity, 10% TDS applies and income/repayment is considered Income from Other Sources taxed at slab rate.",
+        "The KB says if sold after holding for 1 year and before maturity, income is considered gain and LTCG applies at 12.5%.",
+        "The KB notes this applies to only one bond unit with limit up to ₹1 lakh.",
+        "This is a special-case rule and should be handled carefully."
       ],
-      "sample_questions": [
-        "What is taxed when my bond matures?",
-        "Is principal repayment taxable at maturity?",
-        "How is maturity redemption treated for tax?"
-      ],
-      "chunk": "At maturity, the bond's face value or principal is returned. For a regular bond, only the interest component is taxed as interest income. Principal repayment is generally a return of capital, but a bond purchased at a premium or discount can still create a capital loss or gain on redemption.",
-      "answer_guidance": "Keep the standard maturity case simple, then mention premium or discount as the exception that can affect capital gain or loss."
+      "support_answer": "Sir/Madam, deep discount or zero-coupon bonds have a special tax treatment in the KB. If held till maturity, the KB treats the repayment/income as Income from Other Sources with 10% TDS and taxation at slab rate. If sold after holding for more than one year but before maturity, it may be treated as capital gain with LTCG at 12.5%. Since this is a special case, the user should validate personal filing treatment with a CA/tax advisor.",
+      "related_chunks": ["BTX-005", "BTX-003"]
     },
     {
-      "id": "tax_bond_012",
-      "title": "Bonds purchased at premium",
-      "category": "premium_bonds",
-      "keywords": [
-        "premium bond",
-        "above face value",
-        "capital loss",
-        "acquisition cost",
-        "maturity",
-        "set off"
+      "id": "BTX-012",
+      "source_pages": [6, 7],
+      "section": "TDS Lifecycle and Form 168 Reflection",
+      "intent_tags": ["tds lifecycle", "form 168", "form 26as", "reflection delay", "quarterly filing"],
+      "keywords": ["tds lifecycle", "form 168", "form 26as", "issuer deposits", "quarterly return", "income tax department", "10-15 days", "not missing"],
+      "question_patterns": ["Why TDS not showing in Form 168?", "When will TDS reflect?", "What is TDS lifecycle?", "Is TDS missing?"],
+      "facts": [
+        "TDS lifecycle: issuer deducts TDS, pays net interest to user, deposits TDS to government, files quarterly TDS return, data is processed by Income Tax department, then it reflects in Form 168 (previously Form 26AS).",
+        "Reflection in Form 168/Form 26AS generally happens around 10-15 days after the filing due date is completed.",
+        "A delay in Form 168/Form 26AS does not necessarily mean TDS is missing."
       ],
-      "sample_questions": [
-        "What happens if I buy a bond above face value?",
-        "Why do I see capital loss on a premium bond?",
-        "Can premium paid on a bond create capital loss?"
-      ],
-      "chunk": "A bond purchased above face value can create a capital loss at maturity. For example, if the investment amount is Rs. 1,01,000 and maturity value is Rs. 1,00,000, the Rs. 1,000 difference is treated as capital loss. Interest earned on the bond remains taxable separately as income from other sources.",
-      "answer_guidance": "Explain that premium impacts the capital gains or loss calculation, while coupon interest remains taxable separately."
+      "support_answer": "Sir/Madam, TDS reflection is not instant. The issuer first deducts TDS, pays the net interest, deposits the TDS with the government, files the quarterly TDS return, and then the Income Tax department processes it. Only after this will it reflect in Form 168, previously Form 26AS. A delay in Form 168 does not always mean the TDS is missing.",
+      "related_chunks": ["BTX-021", "BTX-022", "BTX-024"]
     },
     {
-      "id": "tax_bond_013",
-      "title": "Bonds purchased at discount",
-      "category": "discount_bonds",
-      "keywords": [
-        "discount bond",
-        "below face value",
-        "capital gain",
-        "maturity gain",
-        "face value",
-        "redemption"
+      "id": "BTX-013",
+      "source_pages": [7],
+      "section": "Form 168 / Form 26AS Meaning",
+      "intent_tags": ["form 168", "form 26as", "tax credit statement", "tds details"],
+      "keywords": ["form 168", "form 26as", "part a", "section 193", "tax credit", "tds deducted", "total income"],
+      "question_patterns": ["What does Form 168 show?", "Does Form 26AS show total income?", "Where is bond TDS visible?"],
+      "facts": [
+        "Form 168, previously Form 26AS, shows TDS deducted/tax credit details linked to PAN.",
+        "For bonds, relevant details can appear under TDS details such as Part A and section 193 entries.",
+        "Form 168/Form 26AS shows TDS deducted; it does not necessarily show total income fully.",
+        "Income must be declared separately while filing ITR.",
+        "If no TDS was deducted or issuer has not filed the return yet, it may not show."
       ],
-      "sample_questions": [
-        "What happens if I buy a bond below face value?",
-        "Is discount on bond redemption taxable?",
-        "Why is there a capital gain at maturity?"
-      ],
-      "chunk": "A bond purchased below face value can create a capital gain at maturity. For example, if the investment amount is Rs. 90,000 and the bond matures at Rs. 1,00,000, the Rs. 10,000 difference is treated as capital gain, subject to applicable holding period rules.",
-      "answer_guidance": "Give the discount-to-face-value example and connect it to capital gains treatment."
+      "support_answer": "Sir/Madam, Form 168, previously Form 26AS, is mainly used to check TDS/tax credit details linked to the PAN. It shows TDS deducted and reported by the issuer, but it may not show total income completely. The user still needs to declare the income separately while filing ITR.",
+      "related_chunks": ["BTX-004", "BTX-016", "BTX-032"]
     },
     {
-      "id": "tax_bond_014",
-      "title": "Deep discount and zero coupon bonds",
-      "category": "zero_coupon_bonds",
-      "keywords": [
-        "deep discount bond",
-        "zero coupon bond",
-        "OID",
-        "TDS",
-        "maturity",
-        "LTCG",
-        "income from other sources"
+      "id": "BTX-014",
+      "source_pages": [8],
+      "section": "TDS Claim While Filing ITR",
+      "intent_tags": ["tds claim", "itr", "tax credit", "set off tds"],
+      "keywords": ["claim tds", "tds credit", "itr", "tax liability", "set off", "form 168", "form 26as"],
+      "question_patterns": ["How to claim TDS?", "Can user claim TDS in ITR?", "How is deducted TDS adjusted?"],
+      "facts": [
+        "Users can claim/set off deducted TDS while filing ITR.",
+        "During ITR filing, the user reports total taxable income, tax liability is calculated, and TDS already deducted is set off from final payable tax.",
+        "TDS credit should be reconciled with Form 168/Form 26AS."
       ],
-      "sample_questions": [
-        "How are zero coupon bonds taxed?",
-        "What is tax treatment for deep discount bonds?",
-        "What happens if I sell a zero coupon bond before maturity?"
-      ],
-      "chunk": "For deep discount or zero coupon bonds, the PDF states that if held till maturity, TDS may apply and the repayment income is considered income from other sources taxed at slab rate. If sold after holding for more than one year and before maturity, the income may be considered a long-term capital gain taxed at 12.5%, subject to the specific bond and applicable rules.",
-      "answer_guidance": "Treat zero coupon/deep discount bonds as a special case and avoid overgeneralizing. Suggest professional tax review for specific instruments."
+      "support_answer": "Sir/Madam, the user can claim the TDS deducted while filing ITR. During filing, the user reports total taxable income, the tax liability is calculated, and the TDS already deducted is adjusted against the final payable tax. The user should reconcile the TDS credit with Form 168, previously Form 26AS.",
+      "related_chunks": ["BTX-013", "BTX-032"]
     },
     {
-      "id": "tax_bond_015",
-      "title": "TDS lifecycle and Form 168 reflection",
-      "category": "tds_lifecycle",
-      "keywords": [
-        "TDS lifecycle",
-        "Form 168",
-        "Form 26AS",
-        "quarterly TDS return",
-        "issuer",
-        "tax credit"
+      "id": "BTX-015",
+      "source_pages": [8],
+      "section": "Form 121 / Earlier Form 15G and 15H",
+      "intent_tags": ["form 121", "form 15g", "form 15h", "tds exemption declaration"],
+      "keywords": ["form 121", "15g", "15h", "senior citizen", "non senior", "tds not deducted", "declaration", "fy 2026-27", "age-neutral"],
+      "question_patterns": ["What is Form 121?", "Does Form 121 replace 15G and 15H?", "Why TDS deducted after submitting Form 121?"],
+      "facts": [
+        "The KB says the government has proposed a new unified declaration form, Form 121, replacing Form 15G and Form 15H from FY 2026-27.",
+        "Earlier Form 15G was for non-senior citizens and Form 15H was for senior citizens.",
+        "The proposed Form 121 is age-neutral and intended to simplify declaration where total income is below taxable limit so TDS is not deducted on interest income.",
+        "Final acceptance and processing of the form is at the discretion of the NBFC/issuer."
       ],
-      "sample_questions": [
-        "How does TDS reach Form 168?",
-        "Why is TDS not visible immediately?",
-        "What is the TDS reporting lifecycle?"
-      ],
-      "chunk": "The TDS lifecycle is: the issuer deducts TDS, pays net interest to the user, deposits TDS with the government, files the quarterly TDS return, and then the Income Tax Department processes the data. TDS generally reflects in Form 168, previously Form 26AS, around 10 to 15 days after the filing due date is completed. A delay in Form 168 does not always mean the TDS is missing.",
-      "answer_guidance": "Use the step-by-step lifecycle to calm mismatch concerns. Emphasize quarterly processing timelines."
+      "support_answer": "Sir/Madam, as per the KB, Form 121 is proposed as a unified declaration form from FY 2026-27, replacing Form 15G and Form 15H. The purpose remains the same: the user declares that total income is below the taxable limit so TDS should not be deducted on interest income. However, final acceptance and processing is at the discretion of the issuer/NBFC.",
+      "related_chunks": ["BTX-037"]
     },
     {
-      "id": "tax_bond_016",
-      "title": "Form 168 shows TDS credit, not total income",
-      "category": "form_168",
-      "keywords": [
-        "Form 168",
-        "Form 26AS",
-        "TDS details",
-        "tax credit",
-        "income declaration",
-        "PAN"
+      "id": "BTX-016",
+      "source_pages": [8, 9],
+      "section": "Reconciliation Framework - Bank Statement and Form 168",
+      "intent_tags": ["reconciliation", "bank statement", "form 168", "ais", "tds mismatch"],
+      "keywords": ["reconcile", "bank statement", "form 168", "form 26as", "tax credit", "pan", "tds deposited", "net amount", "actual credit date"],
+      "question_patterns": ["How to reconcile TDS?", "What should user check for TDS mismatch?", "How to compare platform report with bank and Form 168?"],
+      "facts": [
+        "Bank statement helps verify actual amount credited, interest payout received, net amount after TDS, whether repayment was received, actual credit date, and net payout amount.",
+        "Form 168/Form 26AS helps verify TDS deducted by issuer, TDS deposited with government, PAN-linked tax credit, whether TDS was officially reported, and amount eligible for tax credit while filing ITR.",
+        "Users should reconcile bond income and TDS across platform report, bank statement, Form 168/Form 26AS, and AIS where applicable."
       ],
-      "sample_questions": [
-        "What does Form 168 show for bonds?",
-        "Does Form 168 show my total bond income?",
-        "Why must I declare income separately if TDS is visible?"
-      ],
-      "chunk": "Form 168, previously Form 26AS, shows TDS deducted and reported against the user's PAN. It does not necessarily show the user's total taxable bond income. The user must declare income separately in ITR and use the reflected TDS as tax credit, if available.",
-      "answer_guidance": "Distinguish TDS credit reporting from income reporting. Mention PAN linkage and reconciliation."
+      "support_answer": "Sir/Madam, for reconciliation, the user should compare three things: the platform report, the demat-linked bank statement, and Form 168/Form 26AS. The bank statement confirms the actual net amount credited and credit date. Form 168 confirms whether the issuer has reported TDS against the user’s PAN. This helps identify whether the difference is due to timing, filing delay, or reporting mismatch.",
+      "related_chunks": ["BTX-024", "BTX-032", "BTX-033"]
     },
     {
-      "id": "tax_bond_017",
-      "title": "Claiming TDS while filing ITR",
-      "category": "tds_claim",
-      "keywords": [
-        "claim TDS",
-        "ITR",
-        "tax credit",
-        "TDS adjustment",
-        "final tax payable",
-        "Form 168"
+      "id": "BTX-017",
+      "source_pages": [11, 12],
+      "section": "Advance Tax / March 31 Accrued Entry Rule",
+      "intent_tags": ["advance tax", "march 31", "previous fy", "accrued interest", "tds mismatch"],
+      "keywords": ["advance tax", "march 31", "31 march", "previous financial year", "previous fy", "april deduction", "may deduction", "accrued", "current year form 168", "missing april"],
+      "question_patterns": ["Why April TDS not showing in current year Form 168?", "Why May TDS is in previous FY?", "TDS deducted in April but shown in previous year", "What is March 31 rule?"],
+      "facts": [
+        "If TDS deducted in April/May does not match current FY Form 168/Form 26AS, it may be linked to income accrued at the end of the previous financial year, especially 31 March.",
+        "Some NBFCs file year-end interest or payments as advance tax/accrued entry.",
+        "The user should check the previous financial year's Form 168/Form 26AS and look for entries dated 31 March.",
+        "Tax credits are mapped to the period of earning, not only the payment date.",
+        "If April deduction relates to March earnings, it belongs to previous year's tax records."
       ],
-      "sample_questions": [
-        "How do I claim TDS on bond interest?",
-        "Can TDS be adjusted against my final tax?",
-        "Where is TDS used while filing ITR?"
-      ],
-      "chunk": "Users can claim or set off deducted TDS while filing their Income Tax Return. During filing, the user reports total taxable income, the tax liability is calculated, and TDS already deducted is adjusted against the final payable tax. The TDS amount should be reconciled with Form 168 or other tax credit records.",
-      "answer_guidance": "Explain the claim process at a high level and avoid filing the user's return in the response."
+      "support_answer": "Sir/Madam, if an April or May TDS amount is not visible in the current financial year’s Form 168, it may be due to the March 31 accrual rule. Some NBFCs report accrued interest up to 31 March in the previous financial year. Please ask the user to check the previous financial year’s Form 168/Form 26AS and look for entries dated 31 March. If the April deduction relates to March earnings, it may be mapped to the previous year’s tax records.",
+      "related_chunks": ["BTX-018", "BTX-021", "BTX-024"]
     },
     {
-      "id": "tax_bond_018",
-      "title": "Form 121 replaces Form 15G and 15H from FY 2026-27",
-      "category": "form_121_declaration",
-      "keywords": [
-        "Form 121",
-        "Form 15G",
-        "Form 15H",
-        "declaration",
-        "no TDS",
-        "FY 2026-27"
+      "id": "BTX-018",
+      "source_pages": [11, 12],
+      "section": "Interest Payment Matching After Quarterly Returns",
+      "intent_tags": ["interest matching", "quarterly filing", "timing mismatch", "form 168"],
+      "keywords": ["interest payment matching", "quarterly returns", "filing window", "end of month", "quarter-end", "temporary mismatch", "platform report", "bank credit", "ais"],
+      "question_patterns": ["When will TDS details match?", "Why platform report and AIS mismatch?", "Why temporary difference in TDS?"],
+      "facts": [
+        "TDS details for interest payments generally match automatically once quarterly returns are processed.",
+        "If data does not appear immediately, allow the standard quarterly filing window.",
+        "Updates usually reflect by the end of the month following the quarter-end as per KB wording.",
+        "Timing differences can temporarily create differences between platform report, bank credit, AIS, and Form 168/Form 26AS until reporting is completed."
       ],
-      "sample_questions": [
-        "What is Form 121?",
-        "Does Form 121 replace Form 15G and 15H?",
-        "Why submit Form 121 for bond interest?"
-      ],
-      "chunk": "The PDF says the Government has proposed a unified declaration form, Form 121, replacing both Form 15G and Form 15H from FY 2026-27. The purpose remains to declare that total income is below the taxable limit so that TDS is not deducted on interest income. The new form is described as age-neutral and intended to simplify compliance.",
-      "answer_guidance": "Use cautious wording such as 'the PDF states' or 'proposed' because this is future-facing compliance information."
+      "support_answer": "Sir/Madam, the mismatch can be temporary because TDS details are updated only after the issuer files and the tax department processes the quarterly TDS return. Until that cycle is completed, there may be differences between the platform report, bank credit, AIS, and Form 168/Form 26AS. The details usually align once the quarterly reporting cycle is completed.",
+      "related_chunks": ["BTX-012", "BTX-021"]
     },
     {
-      "id": "tax_bond_019",
-      "title": "Reconciling bond income and TDS",
-      "category": "tax_reconciliation",
-      "keywords": [
-        "reconciliation",
-        "bank statement",
-        "Form 168",
-        "AIS",
-        "TDS",
-        "interest payout",
-        "PAN credit"
+      "id": "BTX-019",
+      "source_pages": [12],
+      "section": "Quarterly Form 168 / Form 26AS Reflection Timeline",
+      "intent_tags": ["tds reflection timeline", "quarterly filing", "q1", "q2", "q3", "q4"],
+      "keywords": ["q1", "q2", "q3", "q4", "july 31", "oct 31", "jan 31", "may 31", "15 august", "15 november", "15 february", "15 june", "filing deadline", "reflection"],
+      "question_patterns": ["When will Q1 TDS reflect?", "When will Q4 TDS show in Form 168?", "What is quarterly TDS reflection timeline?"],
+      "facts": [
+        "Q1 April-June filing deadline is July 31, expected reflection around 15 August.",
+        "Q2 July-September filing deadline is October 31, expected reflection around 15 November.",
+        "Q3 October-December filing deadline is January 31, expected reflection around 15 February.",
+        "Q4 January-March filing deadline is May 31, expected reflection around 15 June.",
+        "TDS reflects only after the deductor files the quarterly TDS return and it is processed."
       ],
-      "sample_questions": [
-        "How should I reconcile bond TDS?",
-        "What documents should I compare before filing ITR?",
-        "How do I check if my bond TDS is correct?"
-      ],
-      "chunk": "Users should reconcile bond income and TDS across the bank statement, Form 168 or Form 26AS, AIS where applicable, and platform reports. The bank statement verifies actual credits, payout dates, and net amounts. Form 168 verifies TDS deducted, deposited, and reported against the PAN. Platform reports help map repayment, sell, holding, and cashflow details.",
-      "answer_guidance": "Give a practical checklist of records to compare and explain what each source verifies."
+      "support_answer": "Sir/Madam, Form 168/Form 26AS follows a quarterly TDS filing cycle. Q1 generally reflects around 15 August, Q2 around 15 November, Q3 around 15 February, and Q4 around 15 June, after the respective filing deadlines and processing. So TDS may not reflect immediately after the payout.",
+      "related_chunks": ["BTX-012", "BTX-018"]
     },
     {
-      "id": "tax_bond_020",
-      "title": "Advance tax or accrued entries across financial years",
-      "category": "advance_tax_mismatch",
-      "keywords": [
-        "advance tax",
-        "accrued interest",
-        "March 31",
-        "April payout",
-        "previous financial year",
-        "Form 168 mismatch"
+      "id": "BTX-020",
+      "source_pages": [12, 13],
+      "section": "Conditions for TDS to Reflect Successfully",
+      "intent_tags": ["tds missing", "pan mismatch", "traces", "processing"],
+      "keywords": ["pan correct", "pan mismatch", "traces", "processed without default", "deposit by 7th", "suspense account", "missing tds", "technical glitch"],
+      "question_patterns": ["Why TDS is missing?", "What conditions are needed for TDS to show?", "PAN issue in TDS reflection", "TRACES processing delay"],
+      "facts": [
+        "The deductor/entity must deposit tax with government within due dates, such as by the 7th of the following month in the KB example.",
+        "PAN must be correct; even one typo can cause the credit to go to suspense or another PAN/Form 168.",
+        "Filing alone is not enough; TRACES must process the return without default, usually taking 7-15 days post-filing.",
+        "Technical glitches and correction returns can also delay reflection."
       ],
-      "sample_questions": [
-        "Why is my April TDS in the previous financial year?",
-        "Why does TDS deducted in May not match current year Form 168?",
-        "What should I do if Form 168 shows TDS in another year?"
-      ],
-      "chunk": "Some NBFCs may file year-end interest or payments as advance tax or accrued entries linked to 31 March. If a user checks in April or May and cannot find the TDS in the current financial year, they should also check the previous financial year's Form 168 for entries dated 31 March. Timing differences can occur because tax credits may be mapped to the earning period and not only the payment date.",
-      "answer_guidance": "Guide the user to check the previous financial year and explain that this can be a timing issue. For unresolved cases, suggest internal escalation or document review."
+      "support_answer": "Sir/Madam, for TDS to reflect properly, three things should happen: the issuer should deposit the tax, the PAN should be correctly reported, and the TDS return should be processed by TRACES without default. If the PAN has even a small mismatch or if the return is still under processing/correction, the TDS may not reflect immediately.",
+      "related_chunks": ["BTX-019", "BTX-021", "BTX-024"]
     },
     {
-      "id": "tax_bond_021",
-      "title": "Quarterly TDS reflection timeline",
-      "category": "tds_reflection_timeline",
-      "keywords": [
-        "TDS reflection",
-        "quarterly filing",
-        "Q1",
-        "Q2",
-        "Q3",
-        "Q4",
-        "TRACES",
-        "Form 168"
+      "id": "BTX-021",
+      "source_pages": [13],
+      "section": "Common Exceptions and Correction Returns",
+      "intent_tags": ["correction return", "delay", "technical glitch", "march 31 rule"],
+      "keywords": ["technical glitch", "march 31 rule", "early april", "correction return", "1-3 weeks", "delay", "previous financial year"],
+      "question_patterns": ["Why still not updated after filing?", "How long correction return takes?", "What are common TDS delays?"],
+      "facts": [
+        "Common exceptions include technical glitches.",
+        "The March 31 rule can cause TDS deducted in early April to relate to March income and appear in previous FY Form 168/Form 26AS.",
+        "If a correction return is filed, it can take an additional 1-3 weeks for the corrected amount to update in Form 168/Form 26AS."
       ],
-      "sample_questions": [
-        "When will TDS reflect in Form 168?",
-        "What is the quarterly TDS filing timeline?",
-        "Why is my TDS not visible yet after payment?"
-      ],
-      "chunk": "TDS reflection in Form 168 is not instant. It depends on the deductor filing quarterly TDS returns and the return being processed. The PDF lists expected reflection around 15 August for Q1, 15 November for Q2, 15 February for Q3, and 15 June for Q4, assuming filing and processing are completed successfully.",
-      "answer_guidance": "Mention that these are expected timelines and depend on successful deposit, correct PAN, filing, and TRACES processing."
+      "support_answer": "Sir/Madam, common reasons for delay include technical glitches, March 31 accrual mapping, or correction returns. If a correction return is filed by the issuer, it may take another 1 to 3 weeks for the corrected amount to reflect in Form 168/Form 26AS.",
+      "related_chunks": ["BTX-017", "BTX-020"]
     },
     {
-      "id": "tax_bond_022",
-      "title": "Reasons TDS may be missing or delayed",
-      "category": "tds_missing_delayed",
-      "keywords": [
-        "missing TDS",
-        "PAN mismatch",
-        "correction return",
-        "technical delay",
-        "TRACES",
-        "Form 16A",
-        "issuer filed return"
+      "id": "BTX-022",
+      "source_pages": [13],
+      "section": "Checklist If TDS Is Missing",
+      "intent_tags": ["missing tds checklist", "escalation", "assessment year", "form 16a"],
+      "keywords": ["missing tds", "checklist", "assessment year", "ay 2026-27", "fy 2025-26", "raise internally", "tl", "asset team", "form 16a", "adamant"],
+      "question_patterns": ["What to do if TDS is missing?", "How to handle user asking Form 16A?", "TDS not reflected escalation process"],
+      "facts": [
+        "First, check Form 168/Form 26AS.",
+        "Verify the correct Assessment Year; example in KB: AY 2026-27 for income earned between April 2025 and March 2026.",
+        "If TDS is not reflected in Form 168/Form 26AS, raise internally to TLs.",
+        "If user is adamant for Form 16A, raise it to the Asset team as per KB."
       ],
-      "sample_questions": [
-        "Why is my TDS missing from Form 168?",
-        "What can delay TDS credit?",
-        "What should support check when TDS is not visible?"
-      ],
-      "chunk": "TDS may be missing or delayed if the deductor has not deposited tax, the PAN was entered incorrectly, the quarterly return has not been processed, there is a technical delay, the entry belongs to the previous financial year under the March 31 rule, or a correction return is pending. If TDS is still not reflected after checking the assessment year and timelines, the case may need internal escalation or Form 16A follow-up with the asset team.",
-      "answer_guidance": "Provide a troubleshooting checklist and avoid promising immediate correction."
+      "support_answer": "Sir/Madam, please first check whether the user is viewing the correct Assessment Year in Form 168/Form 26AS. If the TDS still does not reflect after the expected quarterly timeline, this should be raised internally to TLs. If the user is specifically asking for Form 16A and is adamant, the request can be raised to the Asset team as per process.",
+      "related_chunks": ["BTX-019", "BTX-020", "BTX-024"]
     },
     {
-      "id": "tax_bond_023",
-      "title": "Tax statement disclaimer and reconciliation requirement",
-      "category": "platform_tax_statement_disclaimer",
-      "keywords": [
-        "tax statement",
-        "disclaimer",
-        "Wint Wealth",
-        "tax advisor",
-        "Form 26AS",
-        "demat bank account",
-        "ITR"
+      "id": "BTX-023",
+      "source_pages": [15],
+      "section": "Taxation Report Disclaimer",
+      "intent_tags": ["tax report disclaimer", "wint not tax advisor", "itr", "reconcile"],
+      "keywords": ["tax statement", "disclaimer", "not tax advice", "wint wealth not tax advisor", "form 26as", "bank account", "reconcile", "qualified tax advisor", "chartered accountant"],
+      "question_patterns": ["What disclaimer to add for taxation report?", "Can user rely only on Wint tax report?", "Is Wint tax statement tax advice?"],
+      "facts": [
+        "The tax statement is for reference and convenience only and is not tax advice.",
+        "Wint Wealth is not a professional/qualified tax advisor and does not guarantee accuracy of tax data.",
+        "Before filing ITR, user should reconcile the statement with Form 26AS/Form 168 and demat-linked bank account.",
+        "Tax treatment is based on standard treatment for listed and taxable bonds in India and may vary based on individual circumstances."
       ],
-      "sample_questions": [
-        "Can I rely only on the platform tax statement?",
-        "Is the tax report tax advice?",
-        "Should I reconcile the tax statement before filing?"
-      ],
-      "chunk": "The platform tax statement is for reference and convenience only and is not tax advice. Users should reconcile it with Form 26AS or Form 168 and their demat-linked bank account before filing ITR. Tax rates and structures may change, and actual tax liability can vary based on individual circumstances. Users should consult a qualified tax advisor or chartered accountant for validation.",
-      "answer_guidance": "Use this disclaimer when users ask whether the report is final or sufficient for filing."
+      "support_answer": "Sir/Madam, the taxation report is provided for reference and convenience only. It is not tax advice. Before filing ITR, the user should reconcile it with Form 168/Form 26AS and the demat-linked bank account. Since actual tax liability may vary based on individual circumstances, the user may consult a CA or tax advisor before filing.",
+      "related_chunks": ["BTX-016", "BTX-026"]
     },
     {
-      "id": "tax_bond_024",
-      "title": "Master Report purpose and fields",
-      "category": "master_report",
-      "keywords": [
-        "Master Report",
-        "investment summary",
-        "repayment summary",
-        "sell summary",
-        "holding statement",
-        "upcoming cashflows",
-        "acquisition cost"
+      "id": "BTX-024",
+      "source_pages": [16, 17, 18],
+      "section": "Master Report Purpose and Filing Mapping",
+      "intent_tags": ["master report", "report purpose", "portfolio tracking", "tax filing"],
+      "keywords": ["master report", "consolidated", "holdings", "repayments", "transactions", "future cash flows", "portfolio tracking", "capital gains calculation", "income reconciliation"],
+      "question_patterns": ["What is Master Report?", "How does Master Report help in tax filing?", "Which report helps capital gains calculation?"],
+      "facts": [
+        "Master Report is a consolidated investment and taxation reference document.",
+        "It provides a complete view of bond holdings, repayments, transactions, and expected cash flows.",
+        "It helps with portfolio tracking, tax filing support, income reconciliation, capital gains calculation, and future cash flow planning.",
+        "Overall filing mapping: Repayment Summary = Interest Income + TDS, Sell Summary = Capital Gains/Loss, Holding Statement = reference only, Upcoming Cashflows = estimation only, Master Summary = portfolio and acquisition reference."
       ],
-      "sample_questions": [
-        "What is the Master Report used for?",
-        "Which fields are in the Master Report?",
-        "How does the Master Report help tax filing?"
-      ],
-      "chunk": "The Master Report is a consolidated investment and taxation reference document showing bond holdings, repayments, transactions, and expected cash flows. It helps with portfolio tracking, tax filing support, income reconciliation, capital gains calculation, and future cash flow planning. Key fields include bond name, ISIN, units, invested amount, face value, acquisition cost, investment date, maturity date, XIRR, and interest or principal repayment frequency.",
-      "answer_guidance": "Explain the report as a support document, not a standalone tax filing document."
+      "support_answer": "Sir/Madam, the Master Report gives a consolidated view of bond investments, repayments, holdings, transactions, and expected cash flows. For tax filing, the Repayment Summary helps identify interest income and TDS, the Sell Summary helps calculate capital gains or losses, and the Holding Statement/Upcoming Cashflows are mainly for reference and estimation.",
+      "related_chunks": ["BTX-025", "BTX-026", "BTX-027"]
     },
     {
-      "id": "tax_bond_025",
-      "title": "Master Report tabs and tax filing mapping",
-      "category": "master_report_tabs",
-      "keywords": [
-        "Investment Summary",
-        "Repayment Summary",
-        "Sell Summary",
-        "Upcoming Cashflow",
-        "Holding Statement",
-        "tax filing mapping"
+      "id": "BTX-025",
+      "source_pages": [17],
+      "section": "Master Report Fields",
+      "intent_tags": ["master report fields", "isin", "acquisition cost", "xirr", "holding period"],
+      "keywords": ["bond name", "isin", "units", "invested amount", "face value", "acquisition cost", "date of investment", "maturity date", "xirr", "frequency"],
+      "question_patterns": ["What fields are in Master Report?", "Why acquisition cost is important?", "How date of investment helps?"],
+      "facts": [
+        "Master Report fields include bond name, ISIN, number of units, invested amount, face value, acquisition cost, date of investment, maturity date, XIRR, frequency of interest payment, and frequency of principal repayment.",
+        "ISIN is used for verification and tax records.",
+        "Acquisition cost is used for capital gains calculation.",
+        "Date of investment determines holding period."
       ],
-      "sample_questions": [
-        "Which Master Report tab helps with interest income?",
-        "Which report tab helps calculate capital gains?",
-        "How do Master Report tabs map to ITR?"
-      ],
-      "chunk": "The Master Report includes tabs such as Investment Summary, Repayment Summary, Sell Summary, Upcoming Cashflow Statement, and Holding Statement. For filing, Repayment Summary helps identify interest income and TDS, Sell Summary helps with capital gains or losses, Holding Statement is mainly for reference, Upcoming Cashflows is for estimation only, and Master Summary supports portfolio and acquisition reference.",
-      "answer_guidance": "Map each tab to its filing use in plain language."
+      "support_answer": "Sir/Madam, the Master Report contains important details like Bond Name, ISIN, units, invested amount, face value, acquisition cost, date of investment, maturity date, XIRR, and repayment frequency. Acquisition cost helps calculate capital gain/loss, and date of investment helps decide the holding period.",
+      "related_chunks": ["BTX-024", "BTX-006"]
     },
     {
-      "id": "tax_bond_026",
-      "title": "Taxation Report sections",
-      "category": "taxation_report",
-      "keywords": [
-        "Taxation Report",
-        "summary section",
-        "repayment summary",
-        "maturity details",
-        "bonds sold",
-        "TDS summary"
+      "id": "BTX-026",
+      "source_pages": [19, 20],
+      "section": "Taxation Report Summary and Repayment Summary",
+      "intent_tags": ["taxation report", "repayment summary", "gross interest", "pan"],
+      "keywords": ["taxation report", "summary", "name", "pan", "email", "demat", "repayment summary", "interest paid", "payment date", "net amount", "tds deducted", "gross"],
+      "question_patterns": ["What is shown in repayment summary?", "How does taxation report help filing?", "Why PAN matters in tax report?"],
+      "facts": [
+        "Taxation Report summary shows user identity details such as name, PAN, email, and demat account.",
+        "PAN linkage is critical because tax filing and TDS credit mapping happen through PAN.",
+        "Repayment Summary shows bond name, ISIN, interest paid, payment date, net amount received, and possibly TDS deducted.",
+        "Repayment Summary is used for Income from Other Sources in ITR.",
+        "If interest received is ₹18,000 and TDS is ₹2,000, user must report ₹20,000 gross interest."
       ],
-      "sample_questions": [
-        "What does the Taxation Report show?",
-        "Where do I find interest and TDS in the report?",
-        "Which section shows bonds sold?"
-      ],
-      "chunk": "The Taxation Report includes a summary section with user identity details such as name, PAN, email, and demat account; a Repayment Summary for interest paid, payment date, net amount received, and TDS; Maturity Details for bonds matured during the year; Bonds Sold for realised capital gains or losses; and a TDS Summary showing issuer-wise TDS deducted.",
-      "answer_guidance": "Explain each section by what the user sees and how it supports filing or reconciliation."
+      "support_answer": "Sir/Madam, the Repayment Summary is mainly used to identify taxable interest income and TDS deducted. It shows details like bond name, ISIN, interest paid, payment date, net amount received, and TDS where applicable. While filing ITR, the user should report gross interest, not only the net amount received after TDS.",
+      "related_chunks": ["BTX-004", "BTX-024", "BTX-030"]
     },
     {
-      "id": "tax_bond_027",
-      "title": "How platform sections connect to ITR",
-      "category": "itr_mapping",
-      "keywords": [
-        "ITR mapping",
-        "income from other sources",
-        "capital gains",
-        "TDS credit",
-        "maturity details",
-        "repayment summary"
+      "id": "BTX-027",
+      "source_pages": [21, 22],
+      "section": "Maturity Details and Bonds Sold Tabs",
+      "intent_tags": ["maturity details", "bonds sold", "capital gains section", "tax report tabs"],
+      "keywords": ["maturity details", "bonds sold", "capital gain", "capital loss", "holding period", "realised gain", "capital gains section", "itr"],
+      "question_patterns": ["What is Bonds Sold tab used for?", "Where to report sold bond gain in ITR?", "What is Maturity Details tab?"],
+      "facts": [
+        "Maturity Details shows bonds that matured during the year and includes bond name, ISIN, units, invested amount, principal repaid, maturity date, capital gains/loss, and holding period.",
+        "Bonds Sold tab represents realised capital gains or losses from selling bonds.",
+        "Bonds Sold information goes under the Capital Gains section in ITR.",
+        "User must determine STCG or LTCG based on holding period: less than 12 months = STCG/slab, more than 12 months = LTCG/12.5%."
       ],
-      "sample_questions": [
-        "Where do report sections go in ITR?",
-        "How do I map bond reports to tax filing?",
-        "Which report section is used for TDS credit?"
-      ],
-      "chunk": "Repayment Summary maps to income from other sources because it contains interest income. Bonds Sold maps to capital gains because it captures profit or loss on sale. TDS Summary maps to TDS credit because it shows tax already deducted. Maturity Details are mainly used as a cross-check to ensure no income or redemption detail is missed.",
-      "answer_guidance": "Give a high-level mapping only and avoid giving line-by-line ITR form instructions unless asked."
+      "support_answer": "Sir/Madam, the Bonds Sold tab is used for realised capital gains or losses from selling bonds and this generally goes under the Capital Gains section in ITR. The Maturity Details tab helps cross-check bonds that matured during the year, including principal repaid, maturity date, capital gain/loss, and holding period.",
+      "related_chunks": ["BTX-005", "BTX-006", "BTX-024"]
     },
     {
-      "id": "tax_bond_028",
-      "title": "Repayments Received report mapping",
-      "category": "repayments_received_report",
-      "keywords": [
-        "Repayments Received",
-        "coupon",
-        "principal repayment",
-        "accrued interest",
-        "acquisition cost",
-        "AIS",
-        "tax head"
+      "id": "BTX-028",
+      "source_pages": [22, 23],
+      "section": "TDS Summary Tab and Mismatch Explanation",
+      "intent_tags": ["tds summary", "tax credit", "form 168 mismatch", "issuer filed"],
+      "keywords": ["tds summary", "name of issuer", "total tds deducted", "tax credit", "form 168", "form 26as", "mismatch", "issuer not filed", "timing issue"],
+      "question_patterns": ["What is TDS Summary used for?", "Why TDS summary mismatch with Form 168?", "Where to claim tax credit?"],
+      "facts": [
+        "TDS Summary shows name of issuer and total TDS deducted.",
+        "It represents tax already deducted on behalf of the user.",
+        "It is used for claiming tax credit in ITR.",
+        "This section should match Form 168/Form 26AS entries.",
+        "If there is a mismatch, possible reasons include issuer not filed yet or timing issue."
       ],
-      "sample_questions": [
-        "How do repayment items map to tax heads?",
-        "Is principal repayment taxable?",
-        "Where is accrued interest shown?"
-      ],
-      "chunk": "In the repayment and platform report mapping, coupon interest is taxable in the year it is paid or credited and falls under income from other sources. TDS on interest is tax credit after quarterly filing. Principal repayment is generally a non-taxable return of capital. Accrued interest at purchase is treated as part of acquisition cost, while accrued interest at sale may be taxed as interest in the year of sale. Capital gain or loss from sale is reported under capital gains.",
-      "answer_guidance": "Use this when the user asks how platform rows map to Form 168, AIS, or tax heads."
+      "support_answer": "Sir/Madam, the TDS Summary shows issuer-wise TDS deducted and is used for claiming tax credit in ITR. Ideally, it should match Form 168/Form 26AS. If it does not match, it may be because the issuer has not filed the quarterly return yet or due to timing differences in tax reporting.",
+      "related_chunks": ["BTX-012", "BTX-016", "BTX-019"]
     },
     {
-      "id": "tax_bond_029",
-      "title": "April payout visible on platform but not Form 168",
-      "category": "faq_april_payout",
-      "keywords": [
-        "April payout",
-        "Q1 filing",
-        "July 31",
-        "Form 168",
-        "Form 26AS",
-        "platform TDS"
+      "id": "BTX-029",
+      "source_pages": [23, 24, 25],
+      "section": "Platform Report to ITR / AIS / Form 168 Mapping",
+      "intent_tags": ["filing mapping", "ais", "itr", "tax report mapping", "principal repayment"],
+      "keywords": ["repayment summary", "bonds sold", "tds summary", "maturity details", "ais", "form 168", "income from other sources", "capital gains", "principal repayment", "accrued interest", "acquisition cost", "upcoming cashflows"],
+      "question_patterns": ["Which report section maps to ITR?", "Is principal repayment taxable?", "Where does capital gain show in AIS?", "How does platform report map to AIS?"],
+      "facts": [
+        "Repayment Summary maps to Income from Other Sources because it captures interest income.",
+        "Bonds Sold maps to Capital Gains because it captures profit/loss on sale.",
+        "TDS Summary maps to TDS Credit because it reflects tax already paid/deducted.",
+        "Maturity Details is used as a cross-check to ensure no missed income.",
+        "Principal repayment is not reported in Form 168/AIS as taxable income because it is return of capital.",
+        "Accrued interest at purchase is part of acquisition cost and not separately reported in AIS.",
+        "Accrued interest at sale may be taxed as interest in the year of sale if reported.",
+        "Upcoming future interest/principal is not earned yet and is not taxable yet."
       ],
-      "sample_questions": [
-        "Why is my April payout not visible in Form 168?",
-        "The platform shows April TDS but Form 26AS does not. Why?",
-        "When will April payout TDS reflect?"
-      ],
-      "chunk": "April payouts fall under the Q1 filing cycle for April to June. The quarterly TDS filing date is July 31, and Form 168 or Form 26AS generally reflects the TDS only after the quarterly return is filed and processed. The platform may show TDS immediately based on the repayment date, creating a temporary mismatch.",
-      "answer_guidance": "Explain the timing mismatch and expected Q1 filing cycle."
+      "support_answer": "Sir/Madam, for filing, Repayment Summary is used for interest income under Income from Other Sources, Bonds Sold is used for capital gains or losses, and TDS Summary is used for claiming TDS credit. Principal repayment is generally return of capital and not taxable as income. Upcoming cashflows are only estimates and are not taxable until earned/paid.",
+      "related_chunks": ["BTX-002", "BTX-006", "BTX-026", "BTX-028"]
     },
     {
-      "id": "tax_bond_030",
-      "title": "TDS after submitting Form 121",
-      "category": "faq_form_121_tds",
-      "keywords": [
-        "Form 121",
-        "TDS deducted",
-        "NBFC discretion",
-        "form processing",
-        "declaration",
-        "issuer systems"
+      "id": "BTX-030",
+      "source_pages": [27],
+      "section": "FAQ - April Payout Not Visible in Current Year Form 168",
+      "intent_tags": ["faq", "april payout", "q1", "form 168 not visible"],
+      "keywords": ["april payout", "current year", "form 168", "form 26as", "q1", "april june", "july 31", "quarterly filing"],
+      "question_patterns": ["My April payout is visible on platform but not Form 168", "April TDS not in current year 26AS", "Why April payout not visible in Form 168?"],
+      "facts": [
+        "April payouts fall under Q1 filing cycle, April-June.",
+        "Q1 filing due date is July 31.",
+        "Platform shows TDS immediately based on repayment date, but Form 168/Form 26AS reflects only after quarterly TDS return filing."
       ],
-      "sample_questions": [
-        "Why was TDS deducted after submitting Form 121?",
-        "Can Wint stop TDS after Form 121 submission?",
-        "Who processes Form 121?"
-      ],
-      "chunk": "TDS may still be deducted after submitting Form 121 if the NBFC has not accepted or processed the declaration. The PDF states that final acceptance and processing is at the NBFC's discretion, and Wint Wealth may have limited ability to intervene because it does not have access to the NBFC's internal systems.",
-      "answer_guidance": "Set expectations gently and avoid guaranteeing reversal. Suggest checking issuer processing status where possible."
+      "support_answer": "Sir/Madam, April payouts fall under the Q1 filing cycle, which covers April to June. The issuer files the Q1 TDS return by July 31. The platform may show TDS immediately based on the repayment date, but Form 168/Form 26AS will reflect it only after the quarterly filing and processing is completed.",
+      "related_chunks": ["BTX-019", "BTX-012"]
     },
     {
-      "id": "tax_bond_031",
-      "title": "Capital loss shown on Wint tax report",
-      "category": "faq_capital_loss_report",
-      "keywords": [
-        "capital loss",
-        "Tax Report",
-        "Wint",
-        "sold lower",
-        "premium bond",
-        "investment amount",
-        "purchase price"
+      "id": "BTX-031",
+      "source_pages": [27],
+      "section": "FAQ - No TDS Deducted Despite Interest Received",
+      "intent_tags": ["faq", "no tds", "threshold", "interest received"],
+      "keywords": ["no tds", "interest received", "tds not deducted", "10000 threshold", "issuer compliance", "applicable regulations"],
+      "question_patterns": ["Why no TDS deducted even though interest received?", "Interest received but no TDS", "No TDS on bond interest"],
+      "facts": [
+        "TDS may not have been deducted because the issuing entity may be following the applicable ₹10,000 TDS threshold limit.",
+        "If total interest paid by that particular entity during the financial year does not cross the threshold, TDS may not be deducted.",
+        "Deduction process can vary depending on issuer internal compliance process and applicable regulations.",
+        "Tax liability on interest may still exist even if TDS is not deducted."
       ],
-      "sample_questions": [
-        "Why am I seeing capital loss on Wint?",
-        "Why does the tax report show a loss?",
-        "Can premium purchase create loss in the report?"
-      ],
-      "chunk": "A user may see a capital loss in the Wint Tax Report if a bond was sold at a price lower than its investment amount or if the bond was purchased at a premium and redeemed at face value. The loss reflects the difference between acquisition cost and sale or redemption value, separate from interest income.",
-      "answer_guidance": "Connect report loss to purchase cost versus sale or redemption value. Mention premium bonds as a common reason."
+      "support_answer": "Sir/Madam, TDS may not be deducted even though interest is received if the issuer is following the applicable ₹10,000 threshold rule. If the total interest paid by that particular entity during the financial year does not cross the threshold, TDS may not be deducted. However, the interest income may still need to be reported while filing ITR.",
+      "related_chunks": ["BTX-003"]
     },
     {
-      "id": "tax_bond_032",
-      "title": "Accrued interest shown but not included in taxable income",
-      "category": "faq_accrued_interest_report_logic",
-      "keywords": [
-        "accrued interest",
-        "tax report logic",
-        "taxable income",
-        "platform accrued",
-        "interest paid",
-        "not included"
+      "id": "BTX-032",
+      "source_pages": [27],
+      "section": "FAQ - Interest Reflected in Different Financial Year",
+      "intent_tags": ["faq", "different financial year", "interest timing", "payment date"],
+      "keywords": ["different financial year", "interest reflected", "payment date", "accrued", "actual repayment date", "next financial year"],
+      "question_patterns": ["Why interest reflected in different FY?", "Interest accrued last year paid this year", "Which year should interest be taxed?"],
+      "facts": [
+        "Interest income is generally taxed based on the actual repayment/payment date, not necessarily the period for which interest was earned/accrued.",
+        "If interest accrued over multiple months in one financial year but actual payment happened later, it may reflect in the next financial year."
       ],
-      "sample_questions": [
-        "Why is accrued interest shown but not taxable?",
-        "Why does the platform show accrued interest separately?",
-        "Why is accrued interest not included in taxable income?"
+      "support_answer": "Sir/Madam, interest income is generally considered based on the actual repayment/payment date, not only the period for which it was accrued. So if interest was accrued over multiple months in one financial year but actually paid later, it may reflect in the next financial year.",
+      "related_chunks": ["BTX-002", "BTX-017"]
+    },
+    {
+      "id": "BTX-033",
+      "source_pages": [27],
+      "section": "FAQ - TDS Deducted After Form 121 Submission",
+      "intent_tags": ["faq", "form 121", "tds deducted", "issuer discretion"],
+      "keywords": ["form 121", "tds deducted after form", "nbfc discretion", "internal systems", "not processed", "limited intervention"],
+      "question_patterns": ["Why TDS deducted after submitting Form 121?", "Form 121 submitted but TDS still deducted", "Can Wint stop TDS after Form 121?"],
+      "facts": [
+        "Final acceptance and processing of Form 121 is at the discretion of the NBFC.",
+        "Wint Wealth does not have access to the NBFC's internal systems.",
+        "Ability to intervene is limited if the form is not processed by the NBFC."
       ],
-      "chunk": "Accrued interest may be shown on the platform for tracking or calculation purposes, but it is not necessarily included in taxable income until it is actually paid, credited, or settled in a taxable event such as sale. The taxable amount generally follows the actual interest payout or sale-related interest treatment, not merely the displayed accrued figure.",
-      "answer_guidance": "Use this FAQ to explain platform display versus tax report inclusion."
+      "support_answer": "Sir/Madam, even after Form 121 submission, TDS deduction depends on final acceptance and processing by the issuer/NBFC. Since Wint Wealth does not have access to the NBFC’s internal systems, our ability to intervene is limited if the form was not processed from their end.",
+      "related_chunks": ["BTX-015"]
+    },
+    {
+      "id": "BTX-034",
+      "source_pages": [27],
+      "section": "FAQ - Capital Loss on Wint Tax Report",
+      "intent_tags": ["faq", "capital loss", "tax report", "premium", "sold lower"],
+      "keywords": ["capital loss", "tax report", "wint", "sold lower", "investment amount", "premium", "purchased at premium"],
+      "question_patterns": ["Why capital loss on tax report?", "Why Wint shows capital loss?", "Capital loss even though interest received"],
+      "facts": [
+        "A capital loss may appear if a bond was sold at a price lower than its investment amount.",
+        "A capital loss may also appear if the bond was purchased at premium and later redeemed/matured at face value.",
+        "Capital loss is separate from interest income."
+      ],
+      "support_answer": "Sir/Madam, capital loss may appear in the Tax Report if the bond was sold below its investment/acquisition amount, or if the bond was purchased at a premium and later redeemed at face value. This capital loss is separate from interest income received on the bond.",
+      "related_chunks": ["BTX-009", "BTX-006", "BTX-007"]
+    },
+    {
+      "id": "BTX-035",
+      "source_pages": [27, 2, 3],
+      "section": "FAQ - Accrued Interest Shown but Not Included in Taxable Income",
+      "intent_tags": ["faq", "accrued interest", "tax report logic", "not taxable yet"],
+      "keywords": ["accrued interest", "shown on platform", "not taxable", "tax report logic", "daily accrued", "not included", "payout"],
+      "question_patterns": ["Why accrued interest shown but not taxable?", "Why accrued interest not in tax report?", "Accrued interest visible on platform but not included"],
+      "facts": [
+        "Accrued interest displayed on the platform is not taxable merely because it is shown.",
+        "Interest is taxable when payout/repayment is received from the issuer.",
+        "If bond is sold before maturity, accrued interest handling may affect sale/tax reporting separately."
+      ],
+      "support_answer": "Sir/Madam, accrued interest shown on the platform is a running estimate and is not taxable just because it is displayed. Interest is generally taxable when it is actually paid/credited by the issuer. That is why accrued interest may be visible on the platform but may not appear as taxable income until payout or applicable sale treatment happens.",
+      "related_chunks": ["BTX-002", "BTX-026"]
     }
   ]
 }

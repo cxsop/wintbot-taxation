@@ -1,53 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bond Taxation Chatbot</title>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bond Taxation RAG Chatbot</title>
     <style>
         :root {
             --green: #05A54B;
+            --green-dark: #047A39;
             --green-light: #E8F8EE;
             --green-border: #B3E8C9;
-            --text-dark: #111827;
-            --text-mid: #374151;
-            --text-soft: #6B7280;
+            --text: #111827;
+            --muted: #6B7280;
+            --body: #374151;
             --bg: #F9FAFB;
             --white: #FFFFFF;
             --border: #E5E7EB;
-            --red-light: #FEE2E2;
-            --red-text: #991B1B;
+            --danger: #EF4444;
+            --danger-light: #FEE2E2;
             --blue-light: #EFF6FF;
+            --amber-light: #FEF3C7;
+            --shadow: 0 18px 45px rgba(17, 24, 39, 0.08);
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text-dark);
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            background: radial-gradient(circle at top left, #E8F8EE 0, #F9FAFB 34%, #F9FAFB 100%);
+            color: var(--text);
         }
 
-        .app {
-            max-width: 1180px;
-            margin: 0 auto;
-            padding: 24px;
+        .layout {
+            width: min(1240px, calc(100vw - 28px));
+            height: calc(100vh - 28px);
+            margin: 14px auto;
             display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: 20px;
-            height: 100vh;
+            grid-template-columns: minmax(0, 1fr) 360px;
+            gap: 16px;
         }
 
-        .chat-panel,
-        .debug-panel {
-            background: var(--white);
+        .panel {
+            background: rgba(255, 255, 255, 0.92);
             border: 1px solid var(--border);
-            border-radius: 18px;
-            box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
+            border-radius: 22px;
+            box-shadow: var(--shadow);
             overflow: hidden;
         }
 
@@ -60,208 +58,232 @@
         .header {
             padding: 18px 22px;
             border-bottom: 1px solid var(--border);
-            background: linear-gradient(135deg, var(--green-light), #ffffff);
+            background: linear-gradient(135deg, #FFFFFF, var(--green-light));
         }
 
-        .header h1 {
-            margin: 0;
-            font-size: 22px;
+        .eyebrow {
+            font-size: 12px;
             font-weight: 700;
+            color: var(--green-dark);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
         }
 
-        .header p {
-            margin: 6px 0 0;
-            color: var(--text-soft);
+        h1 {
+            margin: 0;
+            font-size: 23px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            margin: 8px 0 0;
+            color: var(--muted);
             font-size: 14px;
-            line-height: 1.4;
+            line-height: 1.45;
         }
 
         .chat-box {
             flex: 1;
-            overflow-y: auto;
             padding: 22px;
+            overflow-y: auto;
             min-height: 0;
         }
 
         .message {
-            margin-bottom: 16px;
             display: flex;
+            margin-bottom: 16px;
         }
 
-        .message.user {
-            justify-content: flex-end;
-        }
-
-        .message.bot {
-            justify-content: flex-start;
-        }
+        .message.user { justify-content: flex-end; }
+        .message.bot { justify-content: flex-start; }
 
         .bubble {
-            max-width: 78%;
-            padding: 12px 14px;
-            border-radius: 14px;
+            max-width: min(78%, 780px);
+            padding: 13px 15px;
+            border-radius: 16px;
+            line-height: 1.56;
             font-size: 15px;
-            line-height: 1.55;
             white-space: pre-wrap;
-            word-wrap: break-word;
+            word-break: break-word;
         }
 
         .user .bubble {
             background: var(--green);
-            color: white;
-            border-bottom-right-radius: 4px;
+            color: #fff;
+            border-bottom-right-radius: 5px;
         }
 
         .bot .bubble {
             background: #F3F4F6;
-            color: var(--text-mid);
-            border-bottom-left-radius: 4px;
+            color: var(--body);
+            border-bottom-left-radius: 5px;
         }
 
         .bot .bubble.error {
-            background: var(--red-light);
-            color: var(--red-text);
+            background: var(--danger-light);
+            color: #991B1B;
         }
 
         .input-area {
-            border-top: 1px solid var(--border);
             padding: 16px;
-            background: var(--white);
+            border-top: 1px solid var(--border);
+            background: #fff;
         }
 
         .input-row {
             display: flex;
             gap: 10px;
+            align-items: flex-end;
         }
 
         textarea {
             flex: 1;
+            min-height: 50px;
+            max-height: 160px;
             resize: none;
-            min-height: 48px;
-            max-height: 140px;
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 12px;
-            font-size: 15px;
-            font-family: inherit;
+            border-radius: 14px;
+            padding: 13px 14px;
+            font: inherit;
             outline: none;
+            line-height: 1.45;
         }
 
         textarea:focus {
             border-color: var(--green);
-            box-shadow: 0 0 0 3px var(--green-light);
+            box-shadow: 0 0 0 4px var(--green-light);
         }
 
         button {
             border: none;
-            border-radius: 12px;
-            padding: 0 18px;
-            font-size: 15px;
-            font-weight: 600;
+            border-radius: 14px;
+            padding: 14px 18px;
+            font: inherit;
+            font-weight: 700;
             cursor: pointer;
-            font-family: inherit;
+            transition: transform 0.08s ease, opacity 0.2s ease;
         }
+
+        button:active { transform: translateY(1px); }
+        button:disabled { opacity: 0.55; cursor: not-allowed; }
 
         .send-btn {
             background: var(--green);
             color: white;
+            min-width: 88px;
         }
 
-        .send-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
+        .utility-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
         }
 
         .reset-btn {
-            margin-top: 10px;
             background: #F3F4F6;
-            color: var(--text-mid);
-            padding: 10px 14px;
+            color: var(--body);
+            padding: 9px 13px;
+            font-size: 13px;
         }
 
-        .examples {
-            margin-top: 12px;
+        .hint {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .chips {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
+            margin-top: 12px;
         }
 
-        .example-chip {
+        .chip {
+            border: 1px solid var(--green-border);
             background: var(--green-light);
             color: #065F2E;
-            border: 1px solid var(--green-border);
             border-radius: 999px;
             padding: 7px 10px;
-            font-size: 13px;
+            font-size: 12.5px;
             cursor: pointer;
             user-select: none;
         }
 
-        .example-chip:hover {
-            background: #DDF4E6;
-        }
-
-        .debug-panel {
+        .side-panel {
             padding: 18px;
             overflow-y: auto;
         }
 
-        .debug-panel h2 {
-            margin: 0;
-            font-size: 17px;
+        .side-panel h2 {
+            margin: 0 0 6px;
+            font-size: 18px;
         }
 
-        .debug-panel p {
-            color: var(--text-soft);
+        .side-note {
+            margin: 0 0 14px;
+            color: var(--muted);
             font-size: 13px;
-            line-height: 1.5;
+            line-height: 1.45;
         }
 
         .status-card {
+            padding: 12px;
             background: var(--blue-light);
             border: 1px solid #BFDBFE;
-            border-radius: 12px;
-            padding: 12px;
-            margin: 14px 0;
+            border-radius: 14px;
+            margin-bottom: 12px;
             font-size: 13px;
-            color: var(--text-mid);
-            line-height: 1.45;
+            color: var(--body);
+            line-height: 1.5;
         }
 
         .chunk-card {
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 14px;
+            background: #fff;
             padding: 12px;
             margin-bottom: 10px;
-            background: #FFFFFF;
         }
 
         .chunk-title {
-            font-weight: 700;
             font-size: 14px;
-            color: var(--text-dark);
+            font-weight: 800;
+            line-height: 1.35;
         }
 
         .chunk-meta {
-            margin-top: 6px;
+            margin-top: 7px;
+            color: var(--muted);
             font-size: 12px;
-            color: var(--text-soft);
-            line-height: 1.5;
+            line-height: 1.55;
         }
 
-        .empty-debug {
-            background: #F9FAFB;
+        .pill {
+            display: inline-block;
+            border-radius: 999px;
+            background: #F3F4F6;
+            padding: 3px 7px;
+            margin: 4px 4px 0 0;
+            color: var(--body);
+            font-size: 11px;
+        }
+
+        .empty {
             border: 1px dashed var(--border);
-            border-radius: 12px;
+            background: #FAFAFA;
+            border-radius: 14px;
             padding: 14px;
-            color: var(--text-soft);
+            color: var(--muted);
             font-size: 13px;
             line-height: 1.5;
         }
 
         .typing::after {
             content: "";
-            animation: dots 1.2s infinite;
+            animation: dots 1.1s infinite;
         }
 
         @keyframes dots {
@@ -271,76 +293,57 @@
             100% { content: "..."; }
         }
 
-        @media (max-width: 900px) {
-            .app {
+        @media (max-width: 920px) {
+            .layout {
                 grid-template-columns: 1fr;
                 height: auto;
-                padding: 14px;
             }
-
-            .chat-panel {
-                height: 78vh;
-            }
-
-            .debug-panel {
-                max-height: 300px;
-            }
-
-            .bubble {
-                max-width: 90%;
-            }
+            .chat-panel { height: 78vh; }
+            .side-panel { max-height: 360px; }
+            .bubble { max-width: 92%; }
         }
     </style>
 </head>
-
 <body>
-    <main class="app">
-        <section class="chat-panel">
-            <div class="header">
-                <h1>Bond Taxation Chatbot</h1>
-                <p>Render-ready chatbot for listed NCD taxation, TDS, LTCG, STCG, redemption, indexation, and capital loss set-off.</p>
-            </div>
+    <main class="layout">
+        <section class="panel chat-panel">
+            <header class="header">
+                <div class="eyebrow">RAG chatbot · Bond taxation</div>
+                <!-- <h1>Bond Taxation Assistant</h1> -->
+                <!-- <p class="subtitle">Answers are grounded on the uploaded taxation knowledge base. Ask about TDS, Form 168/Form 26AS, capital gains, maturity, premium/discount, Form 121, and report mapping.</p> -->
+            </header>
 
             <div id="chatBox" class="chat-box">
                 <div class="message bot">
-                    <div class="bubble">Hello Sir/Madam. I can help with listed NCD taxation queries.
-
-You can ask:
-- How is listed NCD interest taxed?
-- What is the LTCG rate on listed NCDs?
-- Is indexation available?
-- What happens if I sell before maturity?</div>
+                    <div class="bubble">Select a common taxation issue below or describe the investor's problem.</div>
                 </div>
             </div>
 
             <div class="input-area">
                 <div class="input-row">
-                    <textarea id="userInput" placeholder="Type your bond taxation question here..."></textarea>
+                    <textarea id="userInput" placeholder="Example: If I sell my bond before maturity, how is tax calculated?"></textarea>
                     <button id="sendBtn" class="send-btn" onclick="sendMessage()">Send</button>
                 </div>
-
-                <button class="reset-btn" onclick="resetChat()">Reset Chat</button>
-
-                <div class="examples">
-                    <div class="example-chip" onclick="useExample('How is listed NCD interest taxed?')">Interest tax</div>
-                    <div class="example-chip" onclick="useExample('If I sell my bond before maturity, how is tax calculated?')">Sell before maturity</div>
-                    <div class="example-chip" onclick="useExample('Is indexation available for listed NCD?')">Indexation</div>
-                    <div class="example-chip" onclick="useExample('Can capital loss from bond sale be set off against salary income?')">Capital loss</div>
+                <div class="utility-row">
+                    <button class="reset-btn" onclick="resetChat()">Reset</button>
+                    <div class="hint">Enter = send · Shift + Enter = new line</div>
+                </div>
+                <div class="chips">
+                    <span class="chip" onclick="useExample('If I sell my bond before maturity, how is tax calculated?')">Sale before maturity</span>
+                    <span class="chip" onclick="useExample('Why is my April payout not visible in current year Form 168?')">April Form 168 mismatch</span>
+                    <span class="chip" onclick="useExample('Should the user report gross interest or net interest in ITR?')">Gross vs net interest</span>
+                    <span class="chip" onclick="useExample('Why is capital loss shown on the Wint Tax Report?')">Capital loss report</span>
+                    <span class="chip" onclick="useExample('What is Form 121 and why was TDS deducted after submitting it?')">Form 121</span>
+                    <span class="chip" onclick="useExample('How does the Master Report help in tax filing?')">Master Report</span>
                 </div>
             </div>
         </section>
 
-        <aside class="debug-panel">
-            <h2>Selected Chunks</h2>
-            <p>This panel shows which knowledge-base chunks were selected before sending the query to the model.</p>
-
-            <div class="status-card" id="statusBox">
-                Status: Ready
-            </div>
-
-            <div id="chunksBox" class="empty-debug">
-                No chunks selected yet. Ask a question to see retrieval results.
-            </div>
+        <aside class="panel side-panel">
+            <h2>Retrieval Trace</h2>
+            <p class="side-note">This shows the chunks selected before the answer is generated. It helps debug relevance and accuracy.</p>
+            <div id="statusBox" class="status-card">Status: Ready</div>
+            <div id="chunksBox" class="empty">No chunks selected yet.</div>
         </aside>
     </main>
 
@@ -348,73 +351,8 @@ You can ask:
         const chatBox = document.getElementById("chatBox");
         const userInput = document.getElementById("userInput");
         const sendBtn = document.getElementById("sendBtn");
-        const chunksBox = document.getElementById("chunksBox");
         const statusBox = document.getElementById("statusBox");
-
-        function addMessage(sender, text, isError = false) {
-            const messageDiv = document.createElement("div");
-            messageDiv.classList.add("message", sender);
-
-            const bubble = document.createElement("div");
-            bubble.classList.add("bubble");
-
-            if (isError) {
-                bubble.classList.add("error");
-            }
-
-            bubble.textContent = text;
-            messageDiv.appendChild(bubble);
-            chatBox.appendChild(messageDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-            return messageDiv;
-        }
-
-        function addThinkingMessage() {
-            const messageDiv = document.createElement("div");
-            messageDiv.classList.add("message", "bot");
-
-            const bubble = document.createElement("div");
-            bubble.classList.add("bubble");
-
-            const typing = document.createElement("span");
-            typing.classList.add("typing");
-            typing.textContent = "Thinking";
-
-            bubble.appendChild(typing);
-            messageDiv.appendChild(bubble);
-            chatBox.appendChild(messageDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-            return messageDiv;
-        }
-
-        function updateChunks(chunks) {
-            if (!chunks || chunks.length === 0) {
-                chunksBox.className = "empty-debug";
-                chunksBox.innerHTML = "No matching chunk was selected.";
-                return;
-            }
-
-            chunksBox.className = "";
-
-            chunksBox.innerHTML = chunks.map(chunk => {
-                return `
-                    <div class="chunk-card">
-                        <div class="chunk-title">${escapeHtml(chunk.title || "Untitled chunk")}</div>
-                        <div class="chunk-meta">
-                            ID: ${escapeHtml(chunk.id || "-")}<br>
-                            Category: ${escapeHtml(chunk.category || "-")}<br>
-                            Score: ${escapeHtml(String(chunk.score ?? "-"))}
-                        </div>
-                    </div>
-                `;
-            }).join("");
-        }
-
-        function setStatus(text) {
-            statusBox.textContent = "Status: " + text;
-        }
+        const chunksBox = document.getElementById("chunksBox");
 
         function escapeHtml(value) {
             return String(value)
@@ -425,106 +363,157 @@ You can ask:
                 .replace(/'/g, "&#039;");
         }
 
-        async function sendMessage() {
-            const message = userInput.value.trim();
+        function setStatus(text) {
+            statusBox.textContent = "Status: " + text;
+        }
 
-            if (!message) {
+        function addMessage(sender, text, isError = false) {
+            const wrapper = document.createElement("div");
+            wrapper.className = "message " + sender;
+
+            const bubble = document.createElement("div");
+            bubble.className = "bubble" + (isError ? " error" : "");
+            bubble.textContent = text;
+
+            wrapper.appendChild(bubble);
+            chatBox.appendChild(wrapper);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            return wrapper;
+        }
+
+        function addThinking() {
+            const wrapper = document.createElement("div");
+            wrapper.className = "message bot";
+
+            const bubble = document.createElement("div");
+            bubble.className = "bubble";
+
+            const span = document.createElement("span");
+            span.className = "typing";
+            span.textContent = "Selecting chunks and generating answer";
+            bubble.appendChild(span);
+            wrapper.appendChild(bubble);
+            chatBox.appendChild(wrapper);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            return wrapper;
+        }
+
+        function updateChunks(data) {
+            const chunks = data.selected_chunks || [];
+            const confidence = data.confidence || "-";
+            const fallback = data.used_fallback ? "Yes" : "No";
+            const bestScore = data.best_score ?? "-";
+            const provider = data.provider || "-";
+
+            statusBox.innerHTML = `
+                Status: Completed<br>
+                Confidence: ${escapeHtml(confidence)}<br>
+                Best score: ${escapeHtml(bestScore)}<br>
+                Provider: ${escapeHtml(provider)}<br>
+                Fallback used: ${escapeHtml(fallback)}
+            `;
+
+            if (!chunks.length) {
+                chunksBox.className = "empty";
+                chunksBox.textContent = "No matching chunks selected.";
                 return;
             }
+
+            chunksBox.className = "";
+            chunksBox.innerHTML = chunks.map(chunk => {
+                const tags = (chunk.intent_tags || []).map(tag => `<span class="pill">${escapeHtml(tag)}</span>`).join("");
+                return `
+                    <div class="chunk-card">
+                        <div class="chunk-title">${escapeHtml(chunk.id || "-")} · ${escapeHtml(chunk.section || "Untitled")}</div>
+                        <div class="chunk-meta">
+                            Score: ${escapeHtml(chunk.score ?? "-")}<br>
+                            Pages: ${escapeHtml((chunk.source_pages || []).join(", ") || "-")}<br>
+                            ${tags}
+                        </div>
+                    </div>
+                `;
+            }).join("");
+        }
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
 
             addMessage("user", message);
             userInput.value = "";
             userInput.style.height = "auto";
-
             sendBtn.disabled = true;
-            setStatus("Sending request...");
-            updateChunks([]);
+            setStatus("Sending to Flask...");
+            chunksBox.className = "empty";
+            chunksBox.textContent = "Waiting for retrieval...";
 
-            const thinkingMessage = addThinkingMessage();
+            const thinking = addThinking();
 
             try {
                 const response = await fetch("/api/chat", {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
+                    headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ message })
                 });
 
-                const rawText = await response.text();
-
+                const raw = await response.text();
                 let data;
                 try {
-                    data = JSON.parse(rawText);
-                } catch (jsonError) {
-                    throw new Error("Server returned non-JSON response: " + rawText);
+                    data = JSON.parse(raw);
+                } catch (err) {
+                    throw new Error("Server returned non-JSON response: " + raw.slice(0, 800));
                 }
 
-                thinkingMessage.remove();
+                thinking.remove();
 
                 if (!response.ok) {
-                    addMessage("bot", data.reply || data.error || "Server error occurred.", true);
-                    setStatus("Backend returned error");
-                    updateChunks(data.selected_chunks || []);
+                    addMessage("bot", data.reply || data.error || "Server error.", true);
+                    updateChunks(data);
                     return;
                 }
 
-                addMessage("bot", data.reply || "No reply received from server.");
-                updateChunks(data.selected_chunks || []);
-                setStatus("Completed");
+                addMessage("bot", data.reply || "No reply received.");
+                updateChunks(data);
 
+                if (data.error) {
+                    console.warn("Backend fallback reason:", data.error);
+                }
             } catch (error) {
-                thinkingMessage.remove();
-                addMessage("bot", "Frontend error: " + error.message, true);
-                setStatus("Connection failed");
+                thinking.remove();
+                addMessage("bot", "Frontend error: " + error.message + "\n\nPlease check /health and Render logs.", true);
+                setStatus("Failed");
                 console.error(error);
-
             } finally {
                 sendBtn.disabled = false;
                 userInput.focus();
             }
         }
 
-        async function resetChat() {
-            try {
-                setStatus("Resetting chat...");
-
-                const response = await fetch("/api/reset", {
-                    method: "POST"
-                });
-
-                if (!response.ok) {
-                    throw new Error("Reset request failed.");
-                }
-
-                chatBox.innerHTML = "";
-                addMessage("bot", "Chat reset successfully. Please ask your listed NCD taxation question.");
-                updateChunks([]);
-                setStatus("Ready");
-
-            } catch (error) {
-                addMessage("bot", "Could not reset chat: " + error.message, true);
-                setStatus("Reset failed");
-            }
+        function resetChat() {
+            chatBox.innerHTML = "";
+            addMessage("bot", "Chat reset successfully. Please ask a bond taxation query.");
+            setStatus("Ready");
+            chunksBox.className = "empty";
+            chunksBox.textContent = "No chunks selected yet.";
         }
 
         function useExample(text) {
             userInput.value = text;
             userInput.focus();
             userInput.style.height = "auto";
-            userInput.style.height = userInput.scrollHeight + "px";
+            userInput.style.height = Math.min(userInput.scrollHeight, 160) + "px";
         }
 
-        userInput.addEventListener("keydown", function(event) {
+        userInput.addEventListener("keydown", event => {
             if (event.key === "Enter" && !event.shiftKey) {
                 event.preventDefault();
                 sendMessage();
             }
         });
 
-        userInput.addEventListener("input", function() {
+        userInput.addEventListener("input", () => {
             userInput.style.height = "auto";
-            userInput.style.height = userInput.scrollHeight + "px";
+            userInput.style.height = Math.min(userInput.scrollHeight, 160) + "px";
         });
     </script>
 </body>

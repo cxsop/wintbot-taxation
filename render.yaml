@@ -1,15 +1,7 @@
 services:
   - type: web
-    name: bond-tax-ollama-chatbot
-    runtime: python
+    name: bond-tax-rag-chatbot
+    env: python
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --timeout 240
-    envVars:
-      - key: OLLAMA_API_KEY
-        sync: false
-      - key: OLLAMA_MODEL
-        value: gpt-oss:120b
-      - key: OLLAMA_HOST
-        value: https://ollama.com
-      - key: FLASK_SECRET_KEY
-        generateValue: true
